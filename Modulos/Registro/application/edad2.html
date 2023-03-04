@@ -1,0 +1,21 @@
+<head>
+<script language="JavaScript">
+function edad(Fecha){
+fecha = new Date(Fecha)
+hoy = new Date()
+ed = parseInt((hoy -fecha)/365/24/60/60/1000)
+document.getElementById('pepe').value = ed 
+}
+</script>
+</head>
+
+<body>
+
+<input type="text" name="textfield" onblur="edad(this.value)" />
+<input type="text" name="pepe" id="pepe" />
+</body>
+<!-----La fecha debe introducirse en este orden y formato
+
+
+aaaa/mm/dd
+--->
