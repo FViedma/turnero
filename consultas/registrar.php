@@ -2,21 +2,22 @@
 	if(isset($_POST['registrar'])){
 		require_once('../funciones/conexion.php');
 		require_once('../funciones/funciones.php');
+		require_once('../ticketPrinter.php');
 		$respuesta=[];
 		switch($_POST['registrar']){
 			case'reset-turnos':
 				$fecha=date("Y-m-d H:i:s");
 				$turno="000";
-				$sql="insert into turnos (turno, fechaRegistro) values ('$turno','$fecha')";
+				$sql1="INSERT INTO turnos (turno, fechaRegistro) values('$turno','$fecha')";
 				$error="Error al resetear el turno";
-				$registrar=consulta($con,$sql,$error);
-				$sql="insert into turnoadultos (turno, fechaRegistro) values ('$turno','$fecha')";
+				$registrar=consulta($con,$sql1,$error);
+				$sql2="INSERT INTO turnoadultos (turno, fechaRegistro) values('$turno','$fecha')";
 				$error="Error al resetear el turno";
-				$registrar=consulta($con,$sql,$error);
-				$sql="insert into turnodiscapacitados (turno, fechaRegistro) values ('$turno','$fecha')";
+				$registrar=consulta($con,$sql2,$error);
+				$sql3="INSERT INTO turnodiscapacitados (turno, fechaRegistro) values('$turno','$fecha')";
 				$error="Error al resetear el turno";
-			    $registrar=consulta($con,$sql,$error);
-				
+			    $registrar=consulta($con,$sql3,$error);
+    
 				if($registrar==true){
 					$respuesta=array('status'=>'correcto','mensaje'=>'Turno registrado','turno'=>$turno);		
 				}else{
@@ -24,6 +25,7 @@
 				}	
 			break;
 			case'turno':
+				$letra = "G-";
 				$sql="select id from turnos";
 				$error="Error al registrar el turno";
 				$buscar=consulta($con,$sql,$error);
@@ -56,8 +58,10 @@
 				}else{
 					$respuesta=array('status'=>'error','mensaje'=>'Error al registrar el turno','turno'=>000);	
 				}
+				printTicket($fecha, $turno, $letra);
 			break;
 			case'turnoAdulto':
+				$letra = "AM-";
 				$sql="select id from turnoadultos";
 				$error="Error al registrar el turno";
 				$buscar=consulta($con,$sql,$error);
@@ -90,8 +94,10 @@
 				}else{
 					$respuesta=array('status'=>'error','mensaje'=>'Error al registrar el turno','turno'=>000);	
 				}
+				printTicket($fecha, $turno, $letra);
 			break;
 			case'turnoDiscapacidad':
+				$letra = "D-";
 				$sql="select id from turnodiscapacitados";
 				$error="Error al registrar el turno";
 				$buscar=consulta($con,$sql,$error);
@@ -124,6 +130,7 @@
 				}else{
 					$respuesta=array('status'=>'error','mensaje'=>'Error al registrar el turno','turno'=>000);	
 				}
+				printTicket($fecha, $turno, $letra);
 			break;
 			case'atencion':
 				$idCaja=limpiar($con,$_POST['idCaja']);
@@ -243,9 +250,8 @@
 			default:
 			break;
 		}
-		//echo $resultado['turno'];
+		// echo $resultado['turno'];
 		echo json_encode($respuesta);
 	}else{
 		echo"<span>Opcion no valida</span>";
 	}
-?>
