@@ -1,11 +1,5 @@
 <?php
-	
-	session_start();
-	
-	if(isset($_SESSION['usuario']) && isset($_SESSION['password'])){
-		require_once('funciones/conexion.php');
-		require_once('funciones/funciones.php');
-
+    include('check_role.php');
 ?>
 
 <!doctype html>
@@ -80,12 +74,3 @@
 
 </html>
 
-<?php
-
-	}else{
-
-		header('location:login.php');
-
-	}
-
-?>
