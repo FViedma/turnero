@@ -1,9 +1,3 @@
-<?php
-
-session_start();
-include("constants.php");
-?>
-
 <!doctype html>
 
 <html>
@@ -23,7 +17,8 @@ include("constants.php");
 	<div class="contenedor-principal">
 
 		<?php
-
+		session_start();
+		include("constants.php");
 		$mensaje = "";
 
 		if (isset($_POST['login'])) {
@@ -43,7 +38,7 @@ include("constants.php");
 				$error = "Error al logear al usuario";
 				$buscar = consulta($con, $sql, $error);
 
-				if (mysqli_num_rows($buscar)==1) {
+				if (mysqli_num_rows($buscar) == 1) {
 					$usuario = mysqli_fetch_assoc($buscar);
 					$_SESSION['id'] = $usuario['id'];
 					$_SESSION['idCaja'] = $usuario['idCaja'];
@@ -54,7 +49,7 @@ include("constants.php");
 					// redirect user based on user_type
 					if ($_SESSION['id_rol'] == ADMINISTRADOR) {
 						header("Location: administrador.php");
-					} elseif($_SESSION['id_rol'] == CAJERO) {
+					} elseif ($_SESSION['id_rol'] == CAJERO) {
 						header("Location: caja.php");
 					}
 				} else {
@@ -78,7 +73,7 @@ include("constants.php");
 
 					<label>Usuario</label><input type="text" name="usuario" id="usuario" placeholder="Ingrese su usuario">
 					<label>Password</label><input type="password" name="password" id="password" placeholder="Ingrese su password">
-					<input type="submit" name="login" id="login" value="Loign">
+					<input type="submit" name="login" id="login" value="Login">
 
 				</div>
 

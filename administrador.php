@@ -1,96 +1,96 @@
-<?php
-    include('check_role.php');
-?>
-
 <!doctype html>
 <html>
 
-	<head>
+<head>
 
-		<meta charset="utf-8">
+    <meta charset="utf-8">
 
-		<title>Administraci&oacute;n</title>
+    <title>Administraci&oacute;n</title>
 
-        <link rel="stylesheet" type="text/css" href="css/generales.css">
-        <link rel="stylesheet" type="text/css" href="css/index.css">
+    <link rel="stylesheet" type="text/css" href="css/generales.css">
+    <link rel="stylesheet" type="text/css" href="css/index.css">
 
-    </head>
-	<body>
+</head>
 
-    	<div class="contenedor-principal">        	
+<body>
+    <?php
+    include('check_role.php');
+    ?>
 
-        	<div class="contenedor-menu">
+    <div class="contenedor-principal">
 
-            	<h1 class="titulo-seccion">Administraci&oacute;n</h1>
+        <div class="contenedor-menu">
 
-            	<ul class="menu-ul">
+            <h1 class="titulo-seccion">Administraci&oacute;n</h1>
 
-                	<li class="menu-li"><a href="registrar_usuarios.php">Registrar Usuarios</a></li>
-					<li class="menu-li"><a href="registrar_cajas.php" >Registrar Cajas</a></li>
-					<li class="menu-li"><a href="#" id="reset">Resetear turnos</a></li>
-                </ul>
+            <ul class="menu-ul">
 
-            </div><!--contenedor-->
-            
-			<a href="logout.php" class="link-menu">Cerrar Sesi&oacute;n</a>
+                <li class="menu-li"><a href="registrar_usuarios.php">Registrar Usuarios</a></li>
+                <li class="menu-li"><a href="registrar_cajas.php">Registrar Cajas</a></li>
+                <li class="menu-li"><a href="perfil.php">Perfil de Usuario</a></li>
+                <li class="menu-li"><a href="#" id="reset">Resetear turnos</a></li>
 
-        </div><!--contenedor principal-->
+            </ul>
 
-        <script src="js/funcionesGenerales.js"></script>
+        </div><!--contenedor-->
 
-        <script>
+        <a href="logout.php" class="link-menu">Cerrar Sesi&oacute;n</a>
 
-			agregarEvento(window, 'load', iniciarReset, false);
+    </div><!--contenedor principal-->
 
-			function iniciarReset(){
+    <script src="js/funcionesGenerales.js"></script>
 
-				var resetear = document.getElementById('reset');
-				agregarEvento(resetear, 'click', function(e){
-					
-					if(e){
-					
-						e.preventDefault();
-					
-						id=e.target.id;
-					
-					}
-					
-					var datos = "registrar=reset-turnos";
-					
-					funcion = procesarReseteo;
-					fichero = "consultas/registrar.php";
-					
-					conectarViaPost(funcion,fichero,datos);
-				
-				},false);
-				
-				function procesarReseteo(){
-					
-					if(conexion.readyState == 4){
-				 
-						var data = JSON.parse(conexion.responseText);
-					
-						if(data.status == "correcto"){
-							
-							alert("Turnos reseteados correctamente");
-						
-						}else{
-						
-							console.log("Error al resetear los turnos");
-						
-						}
-					
-					}else{
-						
-						console.log('cargando');
-					}
-				
-				}
-			
-			}
+    <script>
+        agregarEvento(window, 'load', iniciarReset, false);
 
-		</script>
+        function iniciarReset() {
 
-	</body>
+            var resetear = document.getElementById('reset');
+            agregarEvento(resetear, 'click', function(e) {
+
+                if (e) {
+
+                    e.preventDefault();
+
+                    id = e.target.id;
+
+                }
+
+                var datos = "registrar=reset-turnos";
+
+                funcion = procesarReseteo;
+                fichero = "consultas/registrar.php";
+
+                conectarViaPost(funcion, fichero, datos);
+
+            }, false);
+
+            function procesarReseteo() {
+
+                if (conexion.readyState == 4) {
+
+                    var data = JSON.parse(conexion.responseText);
+
+                    if (data.status == "correcto") {
+
+                        alert("Turnos reseteados correctamente");
+
+                    } else {
+
+                        console.log("Error al resetear los turnos");
+
+                    }
+
+                } else {
+
+                    console.log('cargando');
+                }
+
+            }
+
+        }
+    </script>
+
+</body>
 
 </html>

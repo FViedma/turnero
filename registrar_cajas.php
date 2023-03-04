@@ -1,7 +1,5 @@
 <?php
-
-	session_start();
-
+    include('check_role.php');
 ?>
 
 <!doctype html>
