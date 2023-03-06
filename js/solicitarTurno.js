@@ -30,7 +30,7 @@ function detectarAccion(e) {
 
 		case 'General':
 
-			funcion = procesarSolicitud("General");
+			funcion = procesarSolicitud();
 			fichero = 'consultas/registrar.php';
 			datos = 'registrar=turno';
 
@@ -38,7 +38,7 @@ function detectarAccion(e) {
 
 		case 'Adulto_Mayor':
 
-			funcion = procesarSolicitud("Adulto");
+			funcion = procesarSolicitud();
 			fichero = 'consultas/registrar.php';
 			datos = 'registrar=turnoAdulto';
 
@@ -46,51 +46,21 @@ function detectarAccion(e) {
 
 		case 'Discapacidad':
 
-			funcion = procesarSolicitud("Discapacidad");
+			funcion = procesarSolicitud();
 			fichero = 'consultas/registrar.php';
 			datos = 'registrar=turnoDiscapacidad';
-
 			break;
 		default:
 
 			console.log('Opcion no reconocida');
 
 			break;
-
 	}
 
 	conectarViaPost(funcion, fichero, datos);
 
 }
 
-function procesarSolicitud(TipoPaciente) {
-
-	if (conexion.readyState) {
-		switch (TipoPaciente) {
-			case "General":
-				
-				var jsonData = JSON.parse(conexion.responseText);
-				var noturno = document.getElementById('turno');
-
-				noturno.innerHTML = jsonData.turno;
-
-			break;
-			case "Adulto":
-				
-				var jsonData = JSON.parse(conexion.responseText);
-				var noturno = document.getElementById('turnoAM');
-
-				noturno.innerHTML = jsonData.turnoAM;
-			break;
-			case "Discapacidad":
-				
-				var jsonData = JSON.parse(conexion.responseText);
-				var noturno = document.getElementById('turnoDiscapacidad');
-
-				noturno.innerHTML = jsonData.turnoDis;
-			break;
-		}
-
-	}
-
+function procesarSolicitud() {
+	
 }

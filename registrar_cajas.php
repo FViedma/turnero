@@ -1,7 +1,5 @@
 <?php
-
-	session_start();
-
+    include('check_role.php');
 ?>
 
 <!doctype html>
@@ -108,7 +106,7 @@
 
 	            </form>
                    
-                 <a href="index.php" class="link-menu">Menu Principal</a>
+                 <a href="administrador.php" class="link-menu">Atr&aacute;s</a>
             
             </section>
         
