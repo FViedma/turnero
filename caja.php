@@ -20,18 +20,22 @@
 <body>
 	<?php
 	include('check_role.php');
+	
 	?>
 	<div class="contenedor-principal">
 
 		<div class="contenedor-caja">
 
 			<?php
-
+            require_once('funciones/conexion.php');
+			require_once('funciones/funciones.php');
 			$idCaja = $_SESSION['idCaja'];
 
 			//seleccionar los turnos en la tabla atencion que correspondan a la caja y que estan en o en la columna atendido
 			$sqlTurnosAtencion = "select id,turno from atencion where atendido='0' and idCaja='$idCaja'";
 			$error = "Error al seleccionar el turno en atencion ";
+	
+		
 			$buscarTurnosAtencion = consulta($con, $sqlTurnosAtencion, $error);
 
 			$resultado = mysqli_fetch_assoc($buscarTurnosAtencion);
