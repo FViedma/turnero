@@ -42,7 +42,7 @@
 					}else if($turno >= 100){
 						$turno;	
 					}else{
-						$turno="0"."0".$turno;
+						$turno="00".$turno;
 					}
 				}else{
 					$turno="00"."1";

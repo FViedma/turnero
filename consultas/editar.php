@@ -26,7 +26,7 @@
 					// de resultado como un array asociativo			
 					$turno=$resultado['turno']+1;
 					
-					if($turno >= 10 && $turno < 100){
+					if('G-'.$turno >= 10 && $turno < 100){
 						$turno="0".$turno;
 					}else if($turno >= 100){
 						// Ejecuta una sentencia si una

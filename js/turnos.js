@@ -33,7 +33,7 @@ function detectarAccion(e){
 		
 			funcion = procesarSolicitud;
 			fichero = 'consultas/registrar.php';
-			datos = 'registrar=turno';
+			datos = 'registrar=g-turno';
 		
 		break;
 		default:
