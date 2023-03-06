@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 04-03-2023 a las 10:30:52
+-- Tiempo de generación: 06-03-2023 a las 11:53:12
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 7.4.15
 
@@ -60,7 +60,8 @@ INSERT INTO `cajas` (`id`, `nombre`, `idUsuario`, `fecha_de_registro`) VALUES
 (3, 'Caja 3', 10, '0000-00-00 00:00:00'),
 (4, 'Caja 4', 11, '0000-00-00 00:00:00'),
 (5, 'Caja 5', 12, '2020-02-14 17:27:38'),
-(6, 'toño', 13, '2023-02-16 15:06:31');
+(6, 'toño', 13, '2023-02-16 15:06:31'),
+(7, 'Administra', 14, '2023-03-04 10:55:13');
 
 -- --------------------------------------------------------
 
@@ -100,6 +101,26 @@ CREATE TABLE `noticias` (
 -- --------------------------------------------------------
 
 --
+-- Estructura de tabla para la tabla `roles`
+--
+
+CREATE TABLE `roles` (
+  `id` int(11) NOT NULL,
+  `nombre` varchar(12) NOT NULL,
+  `fecha_creacion` timestamp NOT NULL DEFAULT current_timestamp() ON UPDATE current_timestamp()
+) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4;
+
+--
+-- Volcado de datos para la tabla `roles`
+--
+
+INSERT INTO `roles` (`id`, `nombre`, `fecha_creacion`) VALUES
+(1, 'Administrado', '2023-03-04 15:04:19'),
+(2, 'Cajero', '2023-03-04 15:02:26');
+
+-- --------------------------------------------------------
+
+--
 -- Estructura de tabla para la tabla `turnoadultos`
 --
 
@@ -109,6 +130,14 @@ CREATE TABLE `turnoadultos` (
   `atendido` int(11) NOT NULL,
   `fechaRegistro` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
+
+--
+-- Volcado de datos para la tabla `turnoadultos`
+--
+
+INSERT INTO `turnoadultos` (`id`, `turno`, `atendido`, `fechaRegistro`) VALUES
+(1, '001', 0, '2023-03-04 10:36:07'),
+(2, '000', 0, '2023-03-04 12:36:08');
 
 -- --------------------------------------------------------
 
@@ -123,6 +152,13 @@ CREATE TABLE `turnodiscapacitados` (
   `fechaRegistro` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `turnodiscapacitados`
+--
+
+INSERT INTO `turnodiscapacitados` (`id`, `turno`, `atendido`, `fechaRegistro`) VALUES
+(1, '000', 0, '2023-03-04 12:36:08');
+
 -- --------------------------------------------------------
 
 --
@@ -136,6 +172,13 @@ CREATE TABLE `turnos` (
   `fechaRegistro` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
+--
+-- Volcado de datos para la tabla `turnos`
+--
+
+INSERT INTO `turnos` (`id`, `turno`, `atendido`, `fechaRegistro`) VALUES
+(1, '000', 0, '2023-03-04 12:36:08');
+
 -- --------------------------------------------------------
 
 --
@@ -147,6 +190,7 @@ CREATE TABLE `usuarios` (
   `usuario` varchar(50) COLLATE utf8_spanish2_ci NOT NULL,
   `password` varchar(255) COLLATE utf8_spanish2_ci NOT NULL,
   `idCaja` int(11) NOT NULL,
+  `id_rol` int(11) NOT NULL,
   `fecha_alta` datetime NOT NULL,
   `fecha_actualizacion` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
@@ -155,13 +199,14 @@ CREATE TABLE `usuarios` (
 -- Volcado de datos para la tabla `usuarios`
 --
 
-INSERT INTO `usuarios` (`id`, `usuario`, `password`, `idCaja`, `fecha_alta`, `fecha_actualizacion`) VALUES
-(9, 'laura', '680e89809965ec41e64dc7e447f175ab', 2, '2018-01-11 03:04:27', '0000-00-00 00:00:00'),
-(8, 'oscar', 'f156e7995d521f30e6c59a3d6c75e1e5', 1, '2018-01-11 03:04:16', '0000-00-00 00:00:00'),
-(10, 'rocio', '325daa03a34823cef2fc367c779561ba', 3, '2018-01-11 03:04:58', '0000-00-00 00:00:00'),
-(11, 'patricio', '295299b687749528c9a9e551d11e17ea', 4, '2018-01-11 03:05:07', '0000-00-00 00:00:00'),
-(12, 'Alberto', '177dacb14b34103960ec27ba29bd686b', 5, '2020-02-14 17:27:56', '0000-00-00 00:00:00'),
-(13, 'toño', '827ccb0eea8a706c4c34a16891f84e7b', 6, '2023-02-16 15:10:48', '0000-00-00 00:00:00');
+INSERT INTO `usuarios` (`id`, `usuario`, `password`, `idCaja`, `id_rol`, `fecha_alta`, `fecha_actualizacion`) VALUES
+(9, 'laura', '680e89809965ec41e64dc7e447f175ab', 2, 2, '2018-01-11 03:04:27', '0000-00-00 00:00:00'),
+(8, 'oscar', 'f156e7995d521f30e6c59a3d6c75e1e5', 1, 2, '2018-01-11 03:04:16', '0000-00-00 00:00:00'),
+(10, 'rocio', '325daa03a34823cef2fc367c779561ba', 3, 2, '2018-01-11 03:04:58', '0000-00-00 00:00:00'),
+(11, 'patricio', '295299b687749528c9a9e551d11e17ea', 4, 2, '2018-01-11 03:05:07', '0000-00-00 00:00:00'),
+(12, 'Alberto', '177dacb14b34103960ec27ba29bd686b', 5, 2, '2020-02-14 17:27:56', '0000-00-00 00:00:00'),
+(13, 'toño', '827ccb0eea8a706c4c34a16891f84e7b', 6, 2, '2023-02-16 15:10:48', '0000-00-00 00:00:00'),
+(1, 'admin', '81fccaf9f00a8441b77b18fa2c8010f4', 0, 1, '2023-03-04 10:55:31', '2023-03-04 13:53:03');
 
 --
 -- Índices para tablas volcadas
@@ -189,6 +234,12 @@ ALTER TABLE `info_empresa`
 -- Indices de la tabla `noticias`
 --
 ALTER TABLE `noticias`
+  ADD PRIMARY KEY (`id`);
+
+--
+-- Indices de la tabla `roles`
+--
+ALTER TABLE `roles`
   ADD PRIMARY KEY (`id`);
 
 --
@@ -229,7 +280,7 @@ ALTER TABLE `atencion`
 -- AUTO_INCREMENT de la tabla `cajas`
 --
 ALTER TABLE `cajas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=7;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
 
 --
 -- AUTO_INCREMENT de la tabla `info_empresa`
@@ -244,22 +295,28 @@ ALTER TABLE `noticias`
   MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
+-- AUTO_INCREMENT de la tabla `roles`
+--
+ALTER TABLE `roles`
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+
+--
 -- AUTO_INCREMENT de la tabla `turnoadultos`
 --
 ALTER TABLE `turnoadultos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
 
 --
 -- AUTO_INCREMENT de la tabla `turnodiscapacitados`
 --
 ALTER TABLE `turnodiscapacitados`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `turnos`
 --
 ALTER TABLE `turnos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
