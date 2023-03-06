@@ -32,7 +32,7 @@
 					
 					if($noResultados == 0){
 
-						$turno = "A-000";
+						$turno = "000";
 
 					}else{
 

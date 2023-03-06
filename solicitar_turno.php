@@ -42,31 +42,31 @@
 					
 					if($noResultadosGeneral == 0){
 
-						$turno = "G-001";
+						$turno = "001";
 
 					}else{
 
-						$turno = "G-".$resultadoGeneral['turno'];
+						$turno = $resultadoGeneral['turno'];
 	
 					}
 
 					if($noResultadosAdulto == 0){
 
-						$turnoAm = "AM-001";
+						$turnoAm = "001";
 
 					}else{
                         echo $resultadoAdulto['turno'];
-						$turnoAm = "AM-".$resultadoAdulto['turno'];
+						$turnoAm = $resultadoAdulto['turno'];
 	
 					}
 
 					if($noResultadosDiscapacidad == 0){
 
-						$turnoDis = "D-001";
+						$turnoDis = "001";
 
 					}else{
 
-						$turnoDis = "D-".$resultadoDiscapacidad['turno'];
+						$turnoDis = $resultadoDiscapacidad['turno'];
 	
 					}
 

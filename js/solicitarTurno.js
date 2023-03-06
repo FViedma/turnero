@@ -74,21 +74,21 @@ function procesarSolicitud(TipoPaciente) {
 
 				noturno.innerHTML = jsonData.turno;
 
-				break;
+			break;
 			case "Adulto":
 				
 				var jsonData = JSON.parse(conexion.responseText);
 				var noturno = document.getElementById('turnoAM');
 
-				noturno.innerHTML = jsonData.turno;
-				break;
+				noturno.innerHTML = jsonData.turnoAM;
+			break;
 			case "Discapacidad":
 				
 				var jsonData = JSON.parse(conexion.responseText);
 				var noturno = document.getElementById('turnoDiscapacidad');
 
-				noturno.innerHTML = jsonData.turno;
-				break;
+				noturno.innerHTML = jsonData.turnoDis;
+			break;
 		}
 
 	}

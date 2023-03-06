@@ -36,7 +36,7 @@ function recibido(e){
 	var caja = document.getElementById('verCaja');
 	
 	//si turno biene en 000 o undefined siginfica que no hay nuevos turnos
-	if(jsonData.turno != 'A-000' && jsonData.turno != undefined){
+	if(jsonData.turno != '000' && jsonData.turno != undefined){
 	
 		if(turno != null && caja != null){
 

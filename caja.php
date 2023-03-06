@@ -60,7 +60,7 @@
                 
                 <span class="datos-usuario">Cajero: <?php echo $_SESSION['usuario'];?></span>
                 <span class="datos-turno">Turno: <span id="turno">000</span></span>
-            
+
                 <input type="submit" name="atender" id="atender" value="Atender">
             	<input type="hidden" name="turno" id="noTurno" value="<?php echo $turno;?>">
                 <input type="hidden" id="idCaja" value="<?php echo $_SESSION['idCaja'];?>">
