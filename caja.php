@@ -10,6 +10,7 @@
 	<link rel="stylesheet" type="text/css" href="css/generales.css">
 	<link rel="stylesheet" type="text/css" href="css/caja.css">
 
+	<script src="js/jquery-3.1.0.min.js"></script>
 	<script src="js/funcionesGenerales.js"></script>
 	<script src="js/websocket.js"></script>
 	<script src="js/caja.js"></script>
@@ -20,22 +21,22 @@
 <body>
 	<?php
 	include('check_role.php');
-	
+
 	?>
 	<div class="contenedor-principal">
 
 		<div class="contenedor-caja">
 
 			<?php
-            require_once('funciones/conexion.php');
+			require_once('funciones/conexion.php');
 			require_once('funciones/funciones.php');
 			$idCaja = $_SESSION['idCaja'];
 
 			//seleccionar los turnos en la tabla atencion que correspondan a la caja y que estan en o en la columna atendido
 			$sqlTurnosAtencion = "select id,turno from atencion where atendido='0' and idCaja='$idCaja'";
 			$error = "Error al seleccionar el turno en atencion ";
-	
-		
+
+
 			$buscarTurnosAtencion = consulta($con, $sqlTurnosAtencion, $error);
 
 			$resultado = mysqli_fetch_assoc($buscarTurnosAtencion);
@@ -54,15 +55,26 @@
 			<h1>Caja <?php echo $_SESSION['idCaja']; ?></h1>
 
 			<span class="datos-usuario">Cajero: <?php echo $_SESSION['usuario']; ?></span>
+
+			<!-- atencion general -->
 			<span class="datos-turno">Turno: <span id="turno">000</span></span>
 
-			<input type="submit" name="atender" id="atender" value="Atender">
+			<input type="submit" class="atender" name="atender" id="atender" value="Atender">
 			<input type="hidden" name="turno" id="noTurno" value="<?php echo $turno; ?>">
 			<input type="hidden" id="idCaja" value="<?php echo $_SESSION['idCaja']; ?>">
 			<input type="hidden" id="ocupado" value="false">
+			
+			<!-- atencion adultos mayores -->
+			<span class="datos-turno">Turno: <span id="turnoAm">000</span></span>
+			
+			<input type="submit" class="atender" name="atenderAm" id="atenderAm" value="Atender">
+			<input type="hidden" name="turnoAm" id="noTurnoAm" value="<?php echo $turno; ?>">
+			<input type="hidden" id="idCaja" value="<?php echo $_SESSION['idCaja']; ?>">
+			<input type="hidden" id="ocupado" value="false">
+			
 
 			<div class="contenedor-img-status"><img src="img/desconectado.png" id="imgStatus"></div>
-
+			<br>
 			<a href="logout.php" class="salir" id="salir">Salir</a>
 
 			<span id="mensajes"></span>

@@ -1,86 +1,110 @@
 agregarEvento(window, 'load', iniciar, false);
 
-function iniciar(){
+function iniciar() {
 
 	var atender = document.getElementById('atender');
-
-	agregarEvento(atender,'click',detectarAccion,false);
+	var atenderAm = document.getElementById('atenderAm');
+	agregarEvento(atender, 'click', detectarAccion, false);
+	agregarEvento(atenderAm, 'click', detectarAccion, false);
 
 }
 
 var jsonFormat = '';
 
-function detectarAccion(e){
-	
+function detectarAccion(e) {
+
 	var id = "";
-	
-	if(e){
-	
+
+	var result = "";
+
+	if (e) {
+
 		e.preventDefault();
-	
+
 		id = e.target.id;
-	
-	}
-	
-	switch(id){
-	
-		case'atender':	
-	
-			var ocupado1 = document.getElementById('ocupado').value;//se usa para saber si se esta atendiendo o no un turno
-			var idCaja = document.getElementById('idCaja').value;
-			var turno = document.getElementById('noTurno').value;
-	
-			funcion = procesarAtencion;
-	
-			fichero = 'consultas/registrar.php';
-	
-			var datos = 'registrar=atencion'+'&ocupado='+encodeURIComponent(ocupado)+'&idCaja='+encodeURIComponent(idCaja)+'&turno='+encodeURIComponent(turno);
 
-			jsonFormat = {
-				"registrar":"ocupado",
-				"ocupado":+ocupado,
-				"idcaja":+idCaja,
-				"turno":+turno,
-			};
-				
-	
-		break;
-	
 	}
 
-	conectarViaPost(funcion, fichero, datos);
+	switch (id) {
+		case 'atender':
+			result = configurarAtencion("general");
+			break;
+		case 'atenderAm':
+			result = configurarAtencion("adultoMayor");
+			break;
+	}
+	funcion = procesarAtencion;
+	var data = result.split('||');
+	conectarViaPost(funcion, data['0'], data['1']);
 
 }
 
-function procesarAtencion(){
+function configurarAtencion(tipoAtencion) {
+	var turno = "";
+	switch (tipoAtencion) {
+		case "general":
+			var turno = document.getElementById('noTurno').value;
+			break;
 
-	if(conexion.readyState == 4){
+		case "adultoMayor":
+			var turno = document.getElementById('noTurnoAm').value;
+			break;
+	}
+	var ocupado1 = document.getElementById('ocupado').value;//se usa para saber si se esta atendiendo o no un turno
+	var idCaja = document.getElementById('idCaja').value;
 
+	fichero = 'consultas/registrar.php';
+
+	var datos = 'registrar=atencion' + '&ocupado=' + encodeURIComponent(ocupado) + '&idCaja=' + encodeURIComponent(idCaja) + '&turno=' + encodeURIComponent(turno) + '&tipoatencion=' + encodeURIComponent(tipoAtencion);
+
+	jsonFormat = {
+		"registrar": "ocupado",
+		"ocupado": +ocupado,
+		"idcaja": +idCaja,
+		"turno": +turno,
+		"tipoatencion": +tipoAtencion,
+	};
+
+	return fichero + "||" + datos;
+}
+
+function procesarAtencion() {
+
+	if (conexion.readyState == 4) {
 		var data = conexion.responseText;
-
 		//enviar los datos recibidos mediante ajax en formato json  al socket
-		socket.send(data);	
-		
-		var jsonData = JSON.parse(data);//decodificar los datos en formato json
-		var turno = document.getElementById('turno');//turno que se muestra en la pantalla
-		var noTurno = document.getElementById('noTurno');//control input noTurno
+		socket.send(data);
 
+		var jsonData = JSON.parse(data);//decodificar los datos en formato json
+
+		console.log(jsonData.tipoAtencion)
+		switch (jsonData.tipoAtencion) {
+			case "general":
+				var turno = document.getElementById('turno');//turno que se muestra en la pantalla
+				var noTurno = document.getElementById('noTurno');//control input noTurno
+				break;
+				case "adultoMayor":
+				var turno = document.getElementById('turnoAm');//turno que se muestra en la pantalla
+				var noTurno = document.getElementById('noTurnoAm');//control input noTurno
+				break;
+		}
 		turno.innerHTML = jsonData.turno;
-		noTurno.value = jsonData.turno;			
-			
+		noTurno.value = jsonData.turno;
+//probar nuevamente los turnos.
+
 		var mensajes = document.getElementById('mensajes');
 
-		if(jsonData.status == 'error' || jsonData.status == 'mensaje'){			
-			
+		if (jsonData.status == 'error' || jsonData.status == 'mensaje') {
+
 			//poner mensajes de error o de aviso
-			mensajes.innerHTML=jsonData.mensaje;
-		
-		}else{
-		
-			mensajes.innerHTML='';
-		
+			mensajes.innerHTML = jsonData.mensaje;
+
+		} else {
+
+			mensajes.innerHTML = '';
+
 		}
-	
+
 	}
 
 }
