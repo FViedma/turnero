@@ -75,6 +75,14 @@
 			<input type="hidden" id="ocupado" value="false">
 			<span id="mensajesAm"></span>
 			
+			<!-- atencion discapacitados -->
+			<span class="datos-turno">Turno: <span id="turnoD">000</span></span>
+			
+			<input type="submit" class="atender" name="atenderD" id="atenderD" value="Atender">
+			<input type="hidden" name="turnoD" id="noTurnoD" value="<?php echo $turno; ?>">
+			<input type="hidden" id="idCaja" value="<?php echo $_SESSION['idCaja']; ?>">
+			<input type="hidden" id="ocupado" value="false">
+			<span id="mensajes"></span>
 
 			<div class="contenedor-img-status"><img src="img/desconectado.png" id="imgStatus"></div>
 			<br>

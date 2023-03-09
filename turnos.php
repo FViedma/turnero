@@ -31,39 +31,7 @@
                         </div>
                         
                     </div>
-        
-                </div>
-                <div class="marco-tablaTurnos">
-        
-                    <div class="contenedor-tablaTurnos">
-                        <div class="columna-tablaTurnos">
-                            <div class="tabla-turnosArriba">Turno</div>
-                            <div class="tabla-turnosAbajo" id="verTurno">A-000</div>
 
-                        </div>
-                        <div class="columna-tablaTurnos">
-                            <div class="tabla-turnosArriba">Caja</div>  
-                            <div class="tabla-turnosAbajo" id="verCaja">0</div>
-                        </div>
-                    </div>
-        
-                </div>
-
-                <div class="marco-tablaTurnos">
-        
-                    <div class="contenedor-tablaTurnos">
-                        <div class="columna-tablaTurnos">
-                            <div class="tabla-turnosArriba">Turno</div>
-                            <div class="tabla-turnosAbajo" id="verTurno">D-000</div>
-
-                        </div>
-                        <div class="columna-tablaTurnos">
-                            <div class="tabla-turnosArriba">Caja</div>  
-                            <div class="tabla-turnosAbajo" id="verCaja">0</div>
-                        </div>
-                    </div>
-        
-                </div>
             
             </header>
 

@@ -4,9 +4,10 @@ function iniciar() {
 
 	var atender = document.getElementById('atender');
 	var atenderAm = document.getElementById('atenderAm');
+	var atenderD = document.getElementById('atenderD');
 	agregarEvento(atender, 'click', detectarAccion, false);
 	agregarEvento(atenderAm, 'click', detectarAccion, false);
-
+    agregarEvento(atenderD, 'click', detectarAccion, false);
 }
 
 var jsonFormat = '';
@@ -32,6 +33,9 @@ function detectarAccion(e) {
 		case 'atenderAm':
 			result = configurarAtencion("adultoMayor");
 			break;
+		case 'atenderD':
+			result = configurarAtencion("discapacidad");
+			break;
 	}
 	funcion = procesarAtencion;
 	var data = result.split('||');
@@ -48,6 +52,9 @@ function configurarAtencion(tipoAtencion) {
 
 		case "adultoMayor":
 			var turno = document.getElementById('noTurnoAm').value;
+			break;
+		case "discapacidad":
+			var turno = document.getElementById('noTurnoD').value;
 			break;
 	}
 	var ocupado1 = document.getElementById('ocupado').value;//se usa para saber si se esta atendiendo o no un turno
@@ -86,12 +93,17 @@ function procesarAtencion() {
 				var turno = document.getElementById('turnoAm');//turno que se muestra en la pantalla
 				var noTurno = document.getElementById('noTurnoAm');//control input noTurno
 				break;
+			case "discapacidad":
+				var turno = document.getElementById('turnoD');//turno que se muestra en la pantalla
+				var noTurno = document.getElementById('noTurnoD');//control input noTurno
+				break;
 		}
 		turno.innerHTML = jsonData.turno;
 		noTurno.value = jsonData.turno;
 
 		var mensajesG = document.getElementById('mensajesG');
 		var mensajesAm = document.getElementById('mensajesAm');
+		var mensajesD = document.getElementById('mensajesD');
 
 		//poner mensajes de error o de aviso
 		switch (jsonData.tipoAtencion) {
@@ -107,6 +119,13 @@ function procesarAtencion() {
 					mensajesAm.innerHTML = jsonData.mensaje;
 				} else {
 					mensajesAm.innerHTML = "";
+				}
+				break;
+			case "discapacidad":
+				if (jsonData.status == 'error' || jsonData.status == 'mensaje') {
+					mensajesD.innerHTML = jsonData.mensaje;
+				} else {
+					mensajesD.innerHTML = "";
 				}
 				break;
 

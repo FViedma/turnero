@@ -156,6 +156,9 @@ if (isset($_POST['registrar'])) {
 					case "adultoMayor":
 						$sql = sprintf("select id,turno from turnoadultos where atendido='0' order by id asc");
 						break;
+					case "discapacidad":
+						$sql = sprintf("select id,turno from turnodiscapacitados where atendido='0' order by id asc");
+						break;
 				}
 				$error = "Error al seleccionar el turno";
 				$buscar = consulta($con, $sql, $error);
@@ -180,6 +183,9 @@ if (isset($_POST['registrar'])) {
 							$sql = "update turnos set atendido='$idCaja' where id='$resultado[id]'";
 							break;
 						case "adultoMayor":
+							$sql = "update turnoadultos set atendido='$idCaja' where id='$resultado[id]'";
+							break;
+						case "discapacidad":
 							$sql = "update turnoadultos set atendido='$idCaja' where id='$resultado[id]'";
 							break;
 						default:
