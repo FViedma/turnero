@@ -186,7 +186,7 @@ if (isset($_POST['registrar'])) {
 							$sql = "update turnoadultos set atendido='$idCaja' where id='$resultado[id]'";
 							break;
 						case "discapacidad":
-							$sql = "update turnoadultos set atendido='$idCaja' where id='$resultado[id]'";
+							$sql = "update turnodiscapacitados set atendido='$idCaja' where id='$resultado[id]'";
 							break;
 						default:
 							$sql = "";

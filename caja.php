@@ -63,7 +63,7 @@
 			<input type="hidden" name="turno" id="noTurno" value="<?php echo $turno; ?>">
 			<input type="hidden" id="idCaja" value="<?php echo $_SESSION['idCaja']; ?>">
 			<input type="hidden" id="ocupado" value="false">
-			<span id="mensajesG"></span>
+			<span id="mensajesG"></span></br></br>
 			<br>
 			
 			<!-- atencion adultos mayores -->
@@ -73,7 +73,7 @@
 			<input type="hidden" name="turnoAm" id="noTurnoAm" value="<?php echo $turno; ?>">
 			<input type="hidden" id="idCaja" value="<?php echo $_SESSION['idCaja']; ?>">
 			<input type="hidden" id="ocupado" value="false">
-			<span id="mensajesAm"></span>
+			<span id="mensajesAm"></span></br></br>
 			
 			<!-- atencion discapacitados -->
 			<span class="datos-turno">Turno: <span id="turnoD">000</span></span>
@@ -82,7 +82,7 @@
 			<input type="hidden" name="turnoD" id="noTurnoD" value="<?php echo $turno; ?>">
 			<input type="hidden" id="idCaja" value="<?php echo $_SESSION['idCaja']; ?>">
 			<input type="hidden" id="ocupado" value="false">
-			<span id="mensajes"></span>
+			<span id="mensajesD"></span></br></br>
 
 			<div class="contenedor-img-status"><img src="img/desconectado.png" id="imgStatus"></div>
 			<br>

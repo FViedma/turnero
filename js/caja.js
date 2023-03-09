@@ -106,6 +106,7 @@ function procesarAtencion() {
 		var mensajesD = document.getElementById('mensajesD');
 
 		//poner mensajes de error o de aviso
+		console.log(jsonData.mensaje)
 		switch (jsonData.tipoAtencion) {
 			case "general":
 				if (jsonData.status == 'error' || jsonData.status == 'mensaje') {
