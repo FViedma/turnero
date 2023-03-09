@@ -77,33 +77,41 @@ function procesarAtencion() {
 
 		var jsonData = JSON.parse(data);//decodificar los datos en formato json
 
-		console.log(jsonData.tipoAtencion)
 		switch (jsonData.tipoAtencion) {
 			case "general":
 				var turno = document.getElementById('turno');//turno que se muestra en la pantalla
 				var noTurno = document.getElementById('noTurno');//control input noTurno
 				break;
-				case "adultoMayor":
+			case "adultoMayor":
 				var turno = document.getElementById('turnoAm');//turno que se muestra en la pantalla
 				var noTurno = document.getElementById('noTurnoAm');//control input noTurno
 				break;
 		}
 		turno.innerHTML = jsonData.turno;
 		noTurno.value = jsonData.turno;
-//probar nuevamente los turnos.
 
-		var mensajes = document.getElementById('mensajes');
+		var mensajesG = document.getElementById('mensajesG');
+		var mensajesAm = document.getElementById('mensajesAm');
 
-		if (jsonData.status == 'error' || jsonData.status == 'mensaje') {
-
-			//poner mensajes de error o de aviso
-			mensajes.innerHTML = jsonData.mensaje;
-
-		} else {
-
-			mensajes.innerHTML = '';
+		//poner mensajes de error o de aviso
+		switch (jsonData.tipoAtencion) {
+			case "general":
+				if (jsonData.status == 'error' || jsonData.status == 'mensaje') {
+					mensajesG.innerHTML = jsonData.mensaje;
+				} else {
+					mensajesG.innerHTML = "";
+				}
+				break;
+			case "adultoMayor":
+				if (jsonData.status == 'error' || jsonData.status == 'mensaje') {
+					mensajesAm.innerHTML = jsonData.mensaje;
+				} else {
+					mensajesAm.innerHTML = "";
+				}
+				break;
 
 		}
+
 
 	}
 

@@ -59,7 +59,7 @@ if (isset($_POST['registrar'])) {
 			} else {
 				$respuesta = array('status' => 'error', 'mensaje' => 'Error al registrar el turno', 'turno' => 000);
 			}
-			printTicket($fecha, $turno, $letra);
+		//	printTicket($fecha, $turno, $letra);
 			break;
 		case 'turnoAdulto':
 			$letra = "AM-";
@@ -95,7 +95,7 @@ if (isset($_POST['registrar'])) {
 			} else {
 				$respuesta = array('status' => 'error', 'mensaje' => 'Error al registrar el turno', 'turno' => 000);
 			}
-			printTicket($fecha, $turno, $letra);
+		//	printTicket($fecha, $turno, $letra);
 			break;
 		case 'turnoDiscapacidad':
 			$letra = "D-";
@@ -131,7 +131,7 @@ if (isset($_POST['registrar'])) {
 			} else {
 				$respuesta = array('status' => 'error', 'mensaje' => 'Error al registrar el turno', 'turno' => 000);
 			}
-			printTicket($fecha, $turno, $letra);
+		//	printTicket($fecha, $turno, $letra);
 			break;
 		case 'atencion':
 			$idCaja = limpiar($con, $_POST['idCaja']);
@@ -167,9 +167,10 @@ if (isset($_POST['registrar'])) {
 					$fecha = date("Y-m-d H:i:s");
 					$turno = limpiar($con, $resultado['turno']);
 					$idUsuario = $_SESSION['id'];
+					$atendido = 1;
 
 					//poner el turno en la tabla de atenciones
-					$sql = "insert into atencion (turno,idCaja,idUsuario,fechaAtencion,tipoAtencion) values ('$turno','$idCaja','$idUsuario','$fecha', '$tipoAtencion')";
+					$sql = "insert into atencion (turno,idCaja,idUsuario,atendido,fechaAtencion,tipoAtencion) values ('$turno','$idCaja','$idUsuario',$atendido,'$fecha', '$tipoAtencion')";
 					$error = "Error al registrar el turno en atencion";
 					$registrar = consulta($con, $sql, $error);
 
