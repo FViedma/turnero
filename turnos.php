@@ -20,9 +20,14 @@
                 <div class="marco-tablaTurnos">
         
                     <div class="contenedor-tablaTurnos">
+                    <div class="columna-tablaTurnos">
+                            <div class="tabla-turnosArriba">Tipo</div>
+                            <div class="tabla-turnosAbajo" id="verTipo">G-</div>
+
+                        </div>
                         <div class="columna-tablaTurnos">
                             <div class="tabla-turnosArriba">Turno</div>
-                            <div class="tabla-turnosAbajo" id="verTurno">G-000</div>
+                            <div class="tabla-turnosAbajo" id="verTurno">000</div>
 
                         </div>
                         <div class="columna-tablaTurnos">

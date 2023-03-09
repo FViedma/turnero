@@ -51,7 +51,7 @@
 			}
 
 			?>
-
+           
 			<h1>Caja <?php echo $_SESSION['idCaja']; ?></h1>
 
 			<span class="datos-usuario">Cajero: <?php echo $_SESSION['usuario']; ?></span>

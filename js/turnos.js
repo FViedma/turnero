@@ -33,7 +33,7 @@ function detectarAccion(e){
 		
 			funcion = procesarSolicitud;
 			fichero = 'consultas/registrar.php';
-			datos = 'registrar=g-turno';
+			datos = 'registrar=turno';
 		
 		break;
 		default:
@@ -53,6 +53,7 @@ function procesarSolicitud(){
 	if(conexion.readyState){
 
 		var jsonData = JSON.parse(conexion.responseText);
+		console.log(jsonData)
 		var noTurno = document.getElementById('turno');
 	
 		noTurno.innerHTML = jsonData.turno;

@@ -32,6 +32,7 @@ function abierto(){
 function recibido(e){
 
 	var jsonData = JSON.parse(e.data);//decodificar el objeto json
+	console.log(jsonData)
 	var turno = document.getElementById('verTurno');
 	var caja = document.getElementById('verCaja');
 	

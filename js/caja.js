@@ -80,6 +80,7 @@ function procesarAtencion() {
 	if (conexion.readyState == 4) {
 		var data = conexion.responseText;
 		//enviar los datos recibidos mediante ajax en formato json  al socket
+		
 		socket.send(data);
 
 		var jsonData = JSON.parse(data);//decodificar los datos en formato json
