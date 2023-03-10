@@ -53,7 +53,6 @@ function procesarSolicitud(){
 	if(conexion.readyState){
 
 		var jsonData = JSON.parse(conexion.responseText);
-		console.log(jsonData)
 		var noTurno = document.getElementById('turno');
 	
 		noTurno.innerHTML = jsonData.turno;

@@ -22,7 +22,7 @@
                     <div class="contenedor-tablaTurnos">
                     <div class="columna-tablaTurnos">
                             <div class="tabla-turnosArriba">Tipo</div>
-                            <div class="tabla-turnosAbajo" id="verTipo">G-</div>
+                            <div class="tabla-turnosAbajo" id="verTipo">G</div>
 
                         </div>
                         <div class="columna-tablaTurnos">

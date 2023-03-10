@@ -64,13 +64,13 @@ function configurarAtencion(tipoAtencion) {
 
 	var datos = 'registrar=atencion' + '&ocupado=' + encodeURIComponent(ocupado) + '&idCaja=' + encodeURIComponent(idCaja) + '&turno=' + encodeURIComponent(turno) + '&tipoatencion=' + encodeURIComponent(tipoAtencion);
 
-	jsonFormat = {
-		"registrar": "ocupado",
-		"ocupado": +ocupado,
-		"idcaja": +idCaja,
-		"turno": +turno,
-		"tipoatencion": +tipoAtencion,
-	};
+	// jsonFormat = {
+	// 	"registrar": "ocupado",
+	// 	"ocupado": +ocupado,
+	// 	"idcaja": +idCaja,
+	// 	"turno": +turno,
+	// 	"tipoatencion": +tipoAtencion,
+	// };
 
 	return fichero + "||" + datos;
 }
@@ -80,7 +80,6 @@ function procesarAtencion() {
 	if (conexion.readyState == 4) {
 		var data = conexion.responseText;
 		//enviar los datos recibidos mediante ajax en formato json  al socket
-		
 		socket.send(data);
 
 		var jsonData = JSON.parse(data);//decodificar los datos en formato json
@@ -107,7 +106,6 @@ function procesarAtencion() {
 		var mensajesD = document.getElementById('mensajesD');
 
 		//poner mensajes de error o de aviso
-		console.log(jsonData.mensaje)
 		switch (jsonData.tipoAtencion) {
 			case "general":
 				if (jsonData.status == 'error' || jsonData.status == 'mensaje') {

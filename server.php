@@ -49,16 +49,17 @@ while (true) {
 		while(socket_recv($changed_socket, $buf, 1024, 0) >= 1){
 			$received_text = unmask($buf); //unmask data
 			$tst_msg = json_decode($received_text); //json decode 
-			
+
 			//datos recibidos del cliente
 			$status=$tst_msg->status;//que se va a registrar
 			$mensaje=$tst_msg->mensaje;//si esta ocupada la caja
 			$turno=$tst_msg->turno;//el id de la caja
 			$ocupado=$tst_msg->ocupado;//turno
 			$idCaja=$tst_msg->idCaja;//id de la caja
-			
+			$tipoAtencion=$tst_msg->tipoAtencion;//el tipo de atencion
+
 			//prepare data to be sent to client
-			$response_text = mask(json_encode(array('status'=>$status, 'mensaje'=>$mensaje, 'turno'=>$turno, 'ocupado'=>$ocupado, 'idCaja'=>$idCaja)));
+			$response_text = mask(json_encode(array('status'=>$status, 'mensaje'=>$mensaje, 'turno'=>$turno, 'ocupado'=>$ocupado, 'idCaja'=>$idCaja, 'tipoAtencion'=>$tipoAtencion)));
 			
 			send_message($response_text); //send data
 			break 2; //exist this loop
@@ -73,7 +74,7 @@ while (true) {
 			unset($clients[$found_socket]);
 			
 			//notify all users about disconnected connection
-			$response = mask(json_encode(array('status'=>$status, 'mensaje'=>$mensaje, 'turno'=>$turno, 'ocupado'=>$ocupado, 'idCaja'=>$idCaja)));
+			$response = mask(json_encode(array('status'=>$status, 'mensaje'=>$mensaje, 'turno'=>$turno, 'ocupado'=>$ocupado, 'idCaja'=>$idCaja, 'tipoAtencion'=>$tipoAtencion)));
 			send_message($response);
 		}
 	}

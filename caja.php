@@ -1,3 +1,6 @@
+<?php
+include('check_role.php');
+?>
 <!doctype html>
 <html>
 
@@ -19,10 +22,6 @@
 </head>
 
 <body>
-	<?php
-	include('check_role.php');
-
-	?>
 	<div class="contenedor-principal">
 
 		<div class="contenedor-caja">
@@ -51,7 +50,7 @@
 			}
 
 			?>
-           
+
 			<h1>Caja <?php echo $_SESSION['idCaja']; ?></h1>
 
 			<span class="datos-usuario">Cajero: <?php echo $_SESSION['usuario']; ?></span>
@@ -65,19 +64,19 @@
 			<input type="hidden" id="ocupado" value="false">
 			<span id="mensajesG"></span></br></br>
 			<br>
-			
+
 			<!-- atencion adultos mayores -->
 			<span class="datos-turno">Turno: <span id="turnoAm">000</span></span>
-			
+
 			<input type="submit" class="atender" name="atenderAm" id="atenderAm" value="Atender">
 			<input type="hidden" name="turnoAm" id="noTurnoAm" value="<?php echo $turno; ?>">
 			<input type="hidden" id="idCaja" value="<?php echo $_SESSION['idCaja']; ?>">
 			<input type="hidden" id="ocupado" value="false">
 			<span id="mensajesAm"></span></br></br>
-			
+
 			<!-- atencion discapacitados -->
 			<span class="datos-turno">Turno: <span id="turnoD">000</span></span>
-			
+
 			<input type="submit" class="atender" name="atenderD" id="atenderD" value="Atender">
 			<input type="hidden" name="turnoD" id="noTurnoD" value="<?php echo $turno; ?>">
 			<input type="hidden" id="idCaja" value="<?php echo $_SESSION['idCaja']; ?>">

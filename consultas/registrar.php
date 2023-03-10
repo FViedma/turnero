@@ -59,7 +59,7 @@ if (isset($_POST['registrar'])) {
 			} else {
 				$respuesta = array('status' => 'error', 'mensaje' => 'Error al registrar el turno', 'turno' => 000);
 			}
-		//	printTicket($fecha, $turno, $letra);
+			printTicket($fecha, $turno, $letra);
 			break;
 		case 'turnoAdulto':
 			$letra = "AM-";
@@ -95,7 +95,7 @@ if (isset($_POST['registrar'])) {
 			} else {
 				$respuesta = array('status' => 'error', 'mensaje' => 'Error al registrar el turno', 'turno' => 000);
 			}
-		//	printTicket($fecha, $turno, $letra);
+			printTicket($fecha, $turno, $letra);
 			break;
 		case 'turnoDiscapacidad':
 			$letra = "D-";
@@ -131,7 +131,7 @@ if (isset($_POST['registrar'])) {
 			} else {
 				$respuesta = array('status' => 'error', 'mensaje' => 'Error al registrar el turno', 'turno' => 000);
 			}
-		//	printTicket($fecha, $turno, $letra);
+			printTicket($fecha, $turno, $letra);
 			break;
 		case 'atencion':
 			$idCaja = limpiar($con, $_POST['idCaja']);
