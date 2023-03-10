@@ -3,7 +3,7 @@
 -- https://www.phpmyadmin.net/
 --
 -- Servidor: 127.0.0.1
--- Tiempo de generación: 06-03-2023 a las 11:53:12
+-- Tiempo de generación: 10-03-2023 a las 09:31:06
 -- Versión del servidor: 10.4.17-MariaDB
 -- Versión de PHP: 7.4.15
 
@@ -34,7 +34,8 @@ CREATE TABLE `atencion` (
   `idUsuario` int(11) NOT NULL,
   `atendido` int(11) NOT NULL,
   `fechaAtencion` datetime NOT NULL,
-  `idTurno` int(11) NOT NULL
+  `idTurno` int(11) NOT NULL,
+  `tipoAtencion` varchar(20) COLLATE utf8_spanish2_ci NOT NULL DEFAULT ''
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
 -- --------------------------------------------------------
@@ -59,9 +60,7 @@ INSERT INTO `cajas` (`id`, `nombre`, `idUsuario`, `fecha_de_registro`) VALUES
 (2, 'Caja 2', 9, '0000-00-00 00:00:00'),
 (3, 'Caja 3', 10, '0000-00-00 00:00:00'),
 (4, 'Caja 4', 11, '0000-00-00 00:00:00'),
-(5, 'Caja 5', 12, '2020-02-14 17:27:38'),
-(6, 'toño', 13, '2023-02-16 15:06:31'),
-(7, 'Administra', 14, '2023-03-04 10:55:13');
+(5, 'Caja 5', 12, '2020-02-14 17:27:38');
 
 -- --------------------------------------------------------
 
@@ -131,14 +130,6 @@ CREATE TABLE `turnoadultos` (
   `fechaRegistro` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
---
--- Volcado de datos para la tabla `turnoadultos`
---
-
-INSERT INTO `turnoadultos` (`id`, `turno`, `atendido`, `fechaRegistro`) VALUES
-(1, '001', 0, '2023-03-04 10:36:07'),
-(2, '000', 0, '2023-03-04 12:36:08');
-
 -- --------------------------------------------------------
 
 --
@@ -152,13 +143,6 @@ CREATE TABLE `turnodiscapacitados` (
   `fechaRegistro` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
 
---
--- Volcado de datos para la tabla `turnodiscapacitados`
---
-
-INSERT INTO `turnodiscapacitados` (`id`, `turno`, `atendido`, `fechaRegistro`) VALUES
-(1, '000', 0, '2023-03-04 12:36:08');
-
 -- --------------------------------------------------------
 
 --
@@ -171,13 +155,6 @@ CREATE TABLE `turnos` (
   `atendido` int(11) NOT NULL,
   `fechaRegistro` datetime NOT NULL
 ) ENGINE=MyISAM DEFAULT CHARSET=utf8 COLLATE=utf8_spanish2_ci;
-
---
--- Volcado de datos para la tabla `turnos`
---
-
-INSERT INTO `turnos` (`id`, `turno`, `atendido`, `fechaRegistro`) VALUES
-(1, '000', 0, '2023-03-04 12:36:08');
 
 -- --------------------------------------------------------
 
@@ -205,7 +182,6 @@ INSERT INTO `usuarios` (`id`, `usuario`, `password`, `idCaja`, `id_rol`, `fecha_
 (10, 'rocio', '325daa03a34823cef2fc367c779561ba', 3, 2, '2018-01-11 03:04:58', '0000-00-00 00:00:00'),
 (11, 'patricio', '295299b687749528c9a9e551d11e17ea', 4, 2, '2018-01-11 03:05:07', '0000-00-00 00:00:00'),
 (12, 'Alberto', '177dacb14b34103960ec27ba29bd686b', 5, 2, '2020-02-14 17:27:56', '0000-00-00 00:00:00'),
-(13, 'toño', '827ccb0eea8a706c4c34a16891f84e7b', 6, 2, '2023-02-16 15:10:48', '0000-00-00 00:00:00'),
 (1, 'admin', '81fccaf9f00a8441b77b18fa2c8010f4', 0, 1, '2023-03-04 10:55:31', '2023-03-04 13:53:03');
 
 --
@@ -280,7 +256,7 @@ ALTER TABLE `atencion`
 -- AUTO_INCREMENT de la tabla `cajas`
 --
 ALTER TABLE `cajas`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=8;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=6;
 
 --
 -- AUTO_INCREMENT de la tabla `info_empresa`
@@ -304,25 +280,25 @@ ALTER TABLE `roles`
 -- AUTO_INCREMENT de la tabla `turnoadultos`
 --
 ALTER TABLE `turnoadultos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=3;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `turnodiscapacitados`
 --
 ALTER TABLE `turnodiscapacitados`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `turnos`
 --
 ALTER TABLE `turnos`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=2;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT;
 
 --
 -- AUTO_INCREMENT de la tabla `usuarios`
 --
 ALTER TABLE `usuarios`
-  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=14;
+  MODIFY `id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=13;
 COMMIT;
 
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
