@@ -72,7 +72,7 @@
                         
                         <div class="contenedor-reproductor">
                         
-                            <iframe  src="https://www.youtube.com/embed/zw9-xodidNA?rel=0&amp;showinfo=0" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            <iframe  src="Registro/Video Institucional Viedma.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
                         
                         </div>
                     

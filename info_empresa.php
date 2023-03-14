@@ -130,8 +130,7 @@
             
                     <div class="contenedor-controles">
             
-                        <figure class="logoImagen"
-><img src="<?php echo $logo;?>" alt="Logotipo" title="Logotipo"></figure>
+                        <figure class="logoImagen"><img src="<?php echo $logo;?>" alt="Logotipo" title="Logotipo"></figure>
                         <label class="label">Logo:</label><input type="file" name="logo" id="logo" placeholder="Imagen de logo" class="input">
                         <label class="label">Nombre:</label><input type="text" name="nombre" id="nombre" value="<?php echo $nombre;?>" class="input">
                         <label class="label">Direccion:</label><input type="text" name="direccion" id="direccion"value="<?php echo $direccion;?>" class="input">
