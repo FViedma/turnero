@@ -8,7 +8,7 @@ function iniciarWebsocket() {
 
 	imgStatus = document.getElementById('imgStatus');
 
-	socket = new WebSocket("ws://127.0.0.1:8888");
+	socket = new WebSocket("ws://192.168.11.3:8888");
 
 	socket.addEventListener('open', abierto, false);
 	socket.addEventListener('message', recibido, false);
@@ -37,7 +37,7 @@ function recibido(e) {
 	var caja = document.getElementById('verCaja');
 
 	var tipoAtencionR = "";
-	//si turno biene en 000 o undefined siginfica que no hay nuevos turnos
+	//si turno viene en 000 o undefined siginfica que no hay nuevos turnos
 	if (jsonData.turno != '000' && jsonData.turno != undefined) {
 
 		if (tipo != null && turno != null && caja != null) {
@@ -95,18 +95,18 @@ var turno = [];
 var caja = [];
 
 function mostrarTurnos(noTipoAtencion = '', noTurno = '', noCaja = '') {
-
 	var insertar = true;
 
-	for (var i = 0; i < turno.length; i++) {
+	// Este for verifica que no exista el número de turno en la lista de turnos llamados
+	// for (var i = 0; i < turno.length; i++) {
 
-		if (turno[i] == noTurno) {
+	// 	if (turno[i] == noTurno) {
 
-			insertar = false;
+	// 		insertar = false;
 
-		}
+	// 	}
 
-	}
+	// }
 
 	//quitar el ultimo turno para que siempre haya 10
 	if (turno.length == 10 && caja.length == 10) {
@@ -143,17 +143,16 @@ function mostrarTurnos(noTipoAtencion = '', noTurno = '', noCaja = '') {
 
 	caja = caja.reverse();
 
-	var th = "<tr><th>Tipo</th><th>Turno</th><th colspan='2'>Caja</th></tr>";
+	var th = "<tr><th>Tipo</th><th>Turno</th><th colspan='2'>Adm</th></tr>";
 
 	for (var i = 0; i < turno.length; i++) {
-
 		if (i == 0) {
 
-			tr = "<tr><td><span class='primer-fila'>" + tipo[i] + "</span></td><td><span  class='primer-fila'>" + turno[i] + "</span></td><td class='td-caja'><span class='caja primer-fila'>Caja</span></td><td class='no-caja'><span  class='primer-fila'>" + caja[i] + "</span></td></tr>".toString();
+			tr = "<tr><td><span class='primer-fila'>" + tipo[i] + "</span></td><td><span  class='primer-fila'>" + turno[i] + "</span></td><td class='td-caja'><span class='caja primer-fila'>Adm</span></td><td class='no-caja'><span  class='primer-fila'>" + caja[i] + "</span></td></tr>".toString();
 
 		} else {
 
-			tr = tr + "<tr><td><span class='primer-fila'>" + tipo[i] + "</span></td><td>" + turno[i] + "</td><td class='td-caja'><span class='caja'>Caja</span></td><td class='no-caja'>" + caja[i] + "</td></tr>".toString();
+			tr = tr + "<tr><td><span class='primer-fila'>" + tipo[i] + "</span></td><td>" + turno[i] + "</td><td class='td-caja'><span class='caja'>Adm</span></td><td class='no-caja'>" + caja[i] + "</td></tr>".toString();
 
 		}
 
