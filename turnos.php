@@ -96,7 +96,7 @@
             
             <footer class="footer">
                 
-                <marquee class="noticias">Precio del dolar: 20.00MN - solicita tu targeta de credito - Compra en linea tus marcas favoritas sin dar tus datos - Realiza tus operaciones sin acudir a tu sucursal</marquee>
+                <marquee class="noticias">Bienvenidos al Hospital Clínico Viedma, sistema de ordenamiento de filas proximamente en funcionamiento.</marquee>
 
             </footer>
         
