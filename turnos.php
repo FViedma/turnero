@@ -31,7 +31,7 @@
 
                         </div>
                         <div class="columna-tablaTurnos">
-                            <div class="tabla-turnosArriba">Caja</div>  
+                            <div class="tabla-turnosArriba">Adm</div>  
                             <div class="tabla-turnosAbajo" id="verCaja">0</div>
                         </div>
                         
@@ -85,7 +85,7 @@
                     <div class="contenedor-turnos">
                     
                          <table class="tabla-turnos" id="tabla-turnos">
-                            <tr><th>Turno</th><th colspan="2">Caja</th></tr>
+                            <tr><th>Turno</th><th colspan="2">Adm</th></tr>
                         </table>
                     
                     </div><!--contenedor turnos-->

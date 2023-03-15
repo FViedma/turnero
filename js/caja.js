@@ -49,7 +49,6 @@ function configurarAtencion(tipoAtencion) {
 		case "general":
 			var turno = document.getElementById('noTurno').value;
 			break;
-
 		case "adultoMayor":
 			var turno = document.getElementById('noTurnoAm').value;
 			break;
