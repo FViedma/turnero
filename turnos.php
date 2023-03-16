@@ -71,8 +71,9 @@
                     <div class="contenedor-video">
                         
                         <div class="contenedor-reproductor">
-                        
-                            <iframe  src="Registro/Video Institucional Viedma.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>
+                            
+                            <!--<iframe  src="registro/Video Institucional Viedma.mp4" frameborder="0" allow="autoplay; encrypted-media" allowfullscreen></iframe>-->
+                            <img src="img/Hospital-Viedma .jpg">
                         
                         </div>
                     

@@ -83,6 +83,13 @@
 	margin: 0px;
 	margin-left: 10px;
 }
+.img-hospital-Viedam{
+	display: flex;
+	margin-bottom: 10px;
+	padding: 0px;
+	width: 100%;
+	height: 20%
+}
 .contenedor-video{
 	display: flex;
 	align-items: center;
