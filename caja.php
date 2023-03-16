@@ -8,7 +8,7 @@ include('check_role.php');
 
 	<meta charset="utf-8">
 
-	<title>Caja <?php echo $_SESSION['idCaja']; ?></title>
+	<title>Adm <?php echo $_SESSION['idCaja']; ?></title>
 
 	<link rel="stylesheet" type="text/css" href="css/generales.css">
 	<link rel="stylesheet" type="text/css" href="css/caja.css">
@@ -51,14 +51,14 @@ include('check_role.php');
 
 			?>
 
-			<h1>Caja <?php echo $_SESSION['idCaja']; ?></h1>
+			<h1>Admision <?php echo $_SESSION['idCaja']; ?></h1>
 
-			<span class="datos-usuario">Cajero: <?php echo $_SESSION['usuario']; ?></span>
+			<span class="datos-usuario">Admisionista: <?php echo $_SESSION['usuario']; ?></span>
 
 			<!-- atencion general -->
 			<span class="datos-turno">Turno: <span id="turno">000</span></span>
 
-			<input type="submit" class="atender" name="atender" id="atender" value="Atender">
+			<input type="submit" class="atender" name="atender" id="atender" value="General">
 			<input type="hidden" name="turno" id="noTurno" value="<?php echo $turno; ?>">
 			<input type="hidden" id="idCaja" value="<?php echo $_SESSION['idCaja']; ?>">
 			<input type="hidden" id="ocupado" value="false">
@@ -68,7 +68,7 @@ include('check_role.php');
 			<!-- atencion adultos mayores -->
 			<span class="datos-turno">Turno: <span id="turnoAm">000</span></span>
 
-			<input type="submit" class="atender" name="atenderAm" id="atenderAm" value="Atender">
+			<input type="submit" class="atender" name="atenderAm" id="atenderAm" value="Adulto Mayor">
 			<input type="hidden" name="turnoAm" id="noTurnoAm" value="<?php echo $turno; ?>">
 			<input type="hidden" id="idCaja" value="<?php echo $_SESSION['idCaja']; ?>">
 			<input type="hidden" id="ocupado" value="false">
@@ -77,7 +77,7 @@ include('check_role.php');
 			<!-- atencion discapacitados -->
 			<span class="datos-turno">Turno: <span id="turnoD">000</span></span>
 
-			<input type="submit" class="atender" name="atenderD" id="atenderD" value="Atender">
+			<input type="submit" class="atender" name="atenderD" id="atenderD" value="Discapacitados">
 			<input type="hidden" name="turnoD" id="noTurnoD" value="<?php echo $turno; ?>">
 			<input type="hidden" id="idCaja" value="<?php echo $_SESSION['idCaja']; ?>">
 			<input type="hidden" id="ocupado" value="false">

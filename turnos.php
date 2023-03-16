@@ -31,7 +31,7 @@
 
                         </div>
                         <div class="columna-tablaTurnos">
-                            <div class="tabla-turnosArriba">Caja</div>  
+                            <div class="tabla-turnosArriba">Adm</div>  
                             <div class="tabla-turnosAbajo" id="verCaja">0</div>
                         </div>
                         
@@ -86,7 +86,7 @@
                     <div class="contenedor-turnos">
                     
                          <table class="tabla-turnos" id="tabla-turnos">
-                            <tr><th>Turno</th><th colspan="2">Caja</th></tr>
+                            <tr><th>Turno</th><th colspan="2">Adm</th></tr>
                         </table>
                     
                     </div><!--contenedor turnos-->
@@ -97,7 +97,7 @@
             
             <footer class="footer">
                 
-                <marquee class="noticias">Precio del dolar: 20.00MN - solicita tu targeta de credito - Compra en linea tus marcas favoritas sin dar tus datos - Realiza tus operaciones sin acudir a tu sucursal</marquee>
+                <marquee class="noticias">Bienvenidos al Hospital Clínico Viedma, sistema de ordenamiento de filas proximamente en funcionamiento.</marquee>
 
             </footer>
         
