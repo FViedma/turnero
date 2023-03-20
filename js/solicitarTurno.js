@@ -25,12 +25,12 @@ function detectarAccion(e) {
 		id = e.target.id;
 
 	}
-
+	
 	switch (id) {
-
+		
 		case 'General':
-
-			funcion = procesarSolicitud();
+			
+			funcion = procesarSolicitud;
 			fichero = 'consultas/registrar.php';
 			datos = 'registrar=turno';
 
@@ -38,7 +38,7 @@ function detectarAccion(e) {
 
 		case 'Adulto_Mayor':
 
-			funcion = procesarSolicitud();
+			funcion = procesarSolicitud;
 			fichero = 'consultas/registrar.php';
 			datos = 'registrar=turnoAdulto';
 
@@ -46,7 +46,7 @@ function detectarAccion(e) {
 
 		case 'Discapacidad':
 
-			funcion = procesarSolicitud();
+			funcion = procesarSolicitud;
 			fichero = 'consultas/registrar.php';
 			datos = 'registrar=turnoDiscapacidad';
 			break;
@@ -56,11 +56,28 @@ function detectarAccion(e) {
 
 			break;
 	}
-
 	conectarViaPost(funcion, fichero, datos);
 
 }
 
 function procesarSolicitud() {
-	
+	if (conexion.readyState) {
+		var jsonData = JSON.parse(conexion.responseText);
+		var noTurno = document.getElementById('turno');
+		var noTurnoA = document.getElementById('turnoA');
+		var noTurnoD = document.getElementById('turnoD');
+		var tipoAtencion = jsonData.tipoAtencion;
+		switch (tipoAtencion) {
+			case "general":
+				noTurno.innerHTML = jsonData.turno;
+				break;
+			case "adultoMayor":
+				noTurnoA.innerHTML = jsonData.turno;
+				break;
+			case "discapacidad":
+				noTurnoD.innerHTML = jsonData.turno;
+				break;
+		}
+	}
+
 }

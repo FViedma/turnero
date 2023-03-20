@@ -55,11 +55,11 @@ if (isset($_POST['registrar'])) {
 			$registrar = consulta($con, $sql, $error);
 
 			if ($registrar == true) {
-				$respuesta = array('status' => 'correcto', 'mensaje' => 'Turno registrado', 'turno' => $turno);
+				$respuesta = array('status' => 'correcto', 'mensaje' => 'Turno registrado', 'turno' => $turno, 'tipoAtencion' => 'general',);
 			} else {
 				$respuesta = array('status' => 'error', 'mensaje' => 'Error al registrar el turno', 'turno' => 000);
 			}
-			printTicket($fecha, $turno, $letra);
+			// printTicket($fecha, $turno, $letra);
 			break;
 		case 'turnoAdulto':
 			$letra = "AM-";
@@ -91,11 +91,11 @@ if (isset($_POST['registrar'])) {
 			$registrar = consulta($con, $sql, $error);
 
 			if ($registrar == true) {
-				$respuesta = array('status' => 'correcto', 'mensaje' => 'Turno registrado', 'turno' => $turno);
+				$respuesta = array('status' => 'correcto', 'mensaje' => 'Turno registrado', 'turno' => $turno,'tipoAtencion' => 'adultoMayor',);
 			} else {
 				$respuesta = array('status' => 'error', 'mensaje' => 'Error al registrar el turno', 'turno' => 000);
 			}
-			printTicket($fecha, $turno, $letra);
+			// printTicket($fecha, $turno, $letra);
 			break;
 		case 'turnoDiscapacidad':
 			$letra = "D-";
@@ -127,11 +127,11 @@ if (isset($_POST['registrar'])) {
 			$registrar = consulta($con, $sql, $error);
 
 			if ($registrar == true) {
-				$respuesta = array('status' => 'correcto', 'mensaje' => 'Turno registrado', 'turno' => $turno);
+				$respuesta = array('status' => 'correcto', 'mensaje' => 'Turno registrado', 'turno' => $turno, 'tipoAtencion' => 'discapacidad',);
 			} else {
 				$respuesta = array('status' => 'error', 'mensaje' => 'Error al registrar el turno', 'turno' => 000);
 			}
-			printTicket($fecha, $turno, $letra);
+			// printTicket($fecha, $turno, $letra);
 			break;
 		case 'atencion':
 			$idCaja = limpiar($con, $_POST['idCaja']);
@@ -280,7 +280,7 @@ if (isset($_POST['registrar'])) {
 
 			$respuesta = array('status' => $status, 'mensaje' => $mensaje, 'turno' => $turno, 'ocupado' => $ocupado, 'idCaja' => $idCaja, 'tipoAtencion'=> $tipoAtencion);
 			break;
-		default:
+			default:
 			break;
 	}
 	// echo $resultado['turno'];
