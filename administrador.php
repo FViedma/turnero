@@ -29,7 +29,7 @@
                 <li class="menu-li"><a href="registrar_cajas.php">Registrar Cajas</a></li>
                 <li class="menu-li"><a href="perfil.php">Perfil de Usuario</a></li>
                 <li class="menu-li"><a href="#" id="reset">Resetear turnos</a></li>
-                <li class="menu-li"><a href="Registro/index 2.php">Agregar Video</a></li>
+                
  
             </ul>
 
