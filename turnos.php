@@ -1,74 +1,72 @@
 <!doctype html>
 <html>
+	<head>
+	
+    	<meta charset="utf-8">
+	
+    	<title>Turnos</title>
+    
+        <link rel="stylesheet" type="text/css" href="css/generales.css">
+        <link rel="stylesheet" type="text/css" href="css/turnos.css">
+        <link rel="stylesheet" type="text/css" href="css/responsivo-turnos.css">
+    
+    </head>
+	<body>
+    	
+        <div class="contenedor-principal">
+        	
+            <header>
 
-<head>
-
-    <meta charset="utf-8">
-
-    <title>Turnos</title>
-
-    <link rel="stylesheet" type="text/css" href="css/generales.css">
-    <link rel="stylesheet" type="text/css" href="css/turnos.css">
-    <link rel="stylesheet" type="text/css" href="css/responsivo-turnos.css">
-
-</head>
-
-<body>
-
-    <div class="contenedor-principal">
-
-        <header>
-
-            <div class="marco-tablaTurnos">
-
-                <div class="contenedor-tablaTurnos">
+                <div class="marco-tablaTurnos">
+        
+                    <div class="contenedor-tablaTurnos">
                     <div class="columna-tablaTurnos">
-                        <div class="tabla-turnosArriba">Tipo</div>
-                        <div class="tabla-turnosAbajo" id="verTipo">G</div>
+                            <div class="tabla-turnosArriba">Tipo</div>
+                            <div class="tabla-turnosAbajo" id="verTipo">G</div>
 
-                    </div>
-                    <div class="columna-tablaTurnos">
-                        <div class="tabla-turnosArriba">Turno</div>
-                        <div class="tabla-turnosAbajo" id="verTurno">000</div>
+                        </div>
+                        <div class="columna-tablaTurnos">
+                            <div class="tabla-turnosArriba">Turno</div>
+                            <div class="tabla-turnosAbajo" id="verTurno">000</div>
 
-                    </div>
-                    <div class="columna-tablaTurnos">
-                        <div class="tabla-turnosArriba">Adm</div>
-                        <div class="tabla-turnosAbajo" id="verCaja">0</div>
-                    </div>
-
-                </div>
-
-
-        </header>
-
-        <section class="contenido">
-
-            <div class="contenido-izquierda">
-
-                <?php
-                require_once('funciones/conexion.php');
-                require_once('funciones/funciones.php');
-
-                //datos de la empresa
-                $sqlE = "select * from info_empresa";
-                $errorE = "Error al cargar datos de la empresa ";
-                $buscarE = consulta($con, $sqlE, $errorE);
-
-                $info = mysqli_fetch_assoc($buscarE);
-                ?>
-
-                <header class="contenedor-logo">
-
-                    <div class="logo-empresa">
-
-                        <img src="<?php echo $info['logo']; ?>">
-
+                        </div>
+                        <div class="columna-tablaTurnos">
+                            <div class="tabla-turnosArriba">Adm</div>  
+                            <div class="tabla-turnosAbajo" id="verCaja">0</div>
+                        </div>
+                        
                     </div>
 
-                    <h1 class="nombre-empresa"><?php echo $info['nombre']; ?> Bienvenidos</h1>
+            
+            </header>
 
-                </header>
+            <section class="contenido">
+                        
+                <div class="contenido-izquierda">
+
+                    <?php 
+                        require_once('funciones/conexion.php');
+                        require_once('funciones/funciones.php');
+                        
+                        //datos de la empresa
+                        $sqlE = "select * from info_empresa";
+                        $errorE = "Error al cargar datos de la empresa ";
+                        $buscarE = consulta($con,$sqlE,$errorE);
+                            
+                        $info = mysqli_fetch_assoc($buscarE); 
+                    ?>
+
+                    <header class="contenedor-logo">
+
+                        <div class="logo-empresa">
+                        
+                            <img src="<?php echo $info['logo'];?>">
+                        
+                        </div>
+                        
+                        <h1 class="nombre-empresa"><?php echo $info['nombre'];?> Bienvenido</h1>
+                
+		</header>
 
                 <div class="contenedor-video">
 

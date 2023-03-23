@@ -2,69 +2,122 @@
 
 <html>
 
-	<head>
+<head>
 
-		<meta charset="utf-8">
+	<meta charset="utf-8">
 
-		<title>Solicitar turno</title>
+	<title>Solicitar turno</title>
 
-        <link rel="stylesheet" type="text/css" href="css/generales.css">
-        <link rel="stylesheet" type="text/css" href="css/solicitarTurno.css">
+	<link rel="stylesheet" type="text/css" href="css/generales.css">
+	<link rel="stylesheet" type="text/css" href="css/solicitarTurno.css">
 
-    </head>
-	<body>
+</head>
 
-    	<div class="contenedor-principal">
+<body>
 
-        	<?php
+	<div class="contenedor-principal">
 
-					require_once('funciones/conexion.php');
-					require_once('funciones/funciones.php');
-					
-					//datos de la empresa
-					$sqlE = "select * from info_empresa";
-					$errorE = "Error al cargar datos de la empresa ";
+		<?php
 
-					$buscarE = consulta($con,$sqlE,$errorE);
-						
-					$info = mysqli_fetch_assoc($buscarE);	
+		require_once('funciones/conexion.php');
+		require_once('funciones/funciones.php');
 
-			?>
-        	<div class="contenedor-caja">
+		$turno = "";
+		$turnoAm = "";
+		$turnoD = "";
+		//turnos
+		$sqlG = "select turno from turnos order by id desc";
+		$error = "Error al seleccionar el turno";
 
-                <header class="contenedor-logo">
+		$buscar = consulta($con, $sqlG, $error);
 
-                	<figure class="logo-empresa">
-                		<img src="<?php echo $info['logo'];?>">
-                	</figure>
-            		
-            		<h1 class="nombre-empresa"><?php echo $info['nombre'];?> Bienvenido</h1>
-                	        
-                </header>
-                
-                <div class="clear"></div>
-                
-                <input type="submit" name="General" id="General" value="General">
-            	<input type="hidden" name="turnoGeneral" id="turnoGeneral" value=""></br>
+		$resultado = mysqli_fetch_assoc($buscar);
+		$noResultados = mysqli_num_rows($buscar);
 
-				<input type="submit" name="Adulto_Mayor" id="Adulto_Mayor" value="Adulto Mayor">
-            	<input type="hidden" name="turnoAdulto" id="turnoAdulto" value=""></br>
+		if ($noResultados == 0) {
+			$turno = "000";
+		} else {
+			$turno = $resultado['turno'];
+		}
 
-				<input type="submit" name="Discapacidad" id="Discapacidad" value="Discapacidad">
-            	<input type="hidden" name="turnoDiscapacidad" id="turnoDiscapacidad" value="">
+		$sqlA = "select turno from turnoadultos order by id desc";
+		$error = "Error al seleccionar el turno";
 
-				<div class="clear"></div>
-                
-            
-            </div>
+		$buscarA = consulta($con, $sqlA, $error);
 
-        
-        </div>
-        
-        <script src="js/jquery-3.1.0.min.js"></script>
-		<script src="js/funcionesGenerales.js"></script>
-		<script src="js/solicitarTurno.js"></script>
-	
-	</body>
+		$resultado = mysqli_fetch_assoc($buscarA);
+		$noResultados = mysqli_num_rows($buscarA);
+
+		if ($noResultados == 0) {
+			$turnoAm = "000";
+		} else {
+			$turnoAm = $resultado['turno'];
+		}
+
+		$sqlD = "select turno from turnodiscapacitados order by id desc";
+		$error = "Error al seleccionar el turno";
+
+		$buscarD = consulta($con, $sqlD, $error);
+
+		$resultado = mysqli_fetch_assoc($buscarD);
+		$noResultados = mysqli_num_rows($buscarD);
+
+		if ($noResultados == 0) {
+			$turnoD = "000";
+		} else {
+			$turnoD = $resultado['turno'];
+		}
+
+		//datos de la empresa
+		$sqlE = "select * from info_empresa";
+		$errorE = "Error al cargar datos de la empresa ";
+
+		$buscarE = consulta($con, $sqlE, $errorE);
+
+		$info = mysqli_fetch_assoc($buscarE);
+
+		?>
+		<div class="contenedor-caja">
+
+			<header class="contenedor-logo">
+
+				<figure class="logo-empresa">
+					<img src="<?php echo $info['logo']; ?>">
+				</figure>
+
+				<h1 class="nombre-empresa"><?php echo $info['nombre']; ?> Bienvenido</h1>
+
+			</header>
+
+			<div class="clear"></div>
+
+			<span class="datos-turno">Turno: <span id="turno"><?php echo $turno; ?></span></span>
+
+			<input type="submit" name="General" id="General" value="General">
+			<input type="hidden" name="turnoGeneral" id="turnoGeneral" value=""></br>
+
+			<span class="datos-turno">Turno: <span id="turnoA"><?php echo $turnoAm; ?></span></span>
+
+			<input type="submit" name="Adulto_Mayor" id="Adulto_Mayor" value="Adulto Mayor">
+			<input type="hidden" name="turnoAdulto" id="turnoAdulto" value=""></br>
+
+			<span class="datos-turno">Turno: <span id="turnoD"><?php echo $turnoD; ?></span></span>
+
+			<input type="submit" name="Discapacidad" id="Discapacidad" value="Discapacidad">
+			<input type="hidden" name="turnoDiscapacidad" id="turnoDiscapacidad" value="">
+
+			<div class="clear"></div>
+
+
+		</div>
+
+
+	</div>
+
+	<script src="js/jquery-3.1.0.min.js"></script>
+	<script src="js/funcionesGenerales.js"></script>
+	<script src="js/solicitarTurno.js"></script>
+
+</body>
 
 </html>
