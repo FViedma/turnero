@@ -172,7 +172,7 @@
 
 
 
-        <a href="index.php" class="link-menu">Menu Principal</a>
+        <a href="administrador.php" class="link-menu">Menu Principal</a>
 
     </div>
 
