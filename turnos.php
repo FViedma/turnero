@@ -48,6 +48,7 @@
                         require_once('funciones/conexion.php');
                         require_once('funciones/funciones.php');
                         
+                        
                         //datos de la empresa
                         $sqlE = "select * from info_empresa";
                         $errorE = "Error al cargar datos de la empresa ";
@@ -88,6 +89,7 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 echo "<source src='videos/" . $row['nombre'] . $row['extension'] . "' type='video/mp4'></source>";
+                                // 
                             }
 
                             ?>
@@ -131,7 +133,6 @@
     <script src="js/funcionesGenerales.js"></script>
     <script src="js/websocket.js"></script>
     <script src="js/video.js"></script>
-    <!--<script src="js/turnos.js"></script>-->
 
 </body>
 

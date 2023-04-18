@@ -29,15 +29,19 @@
                 <li class="menu-li"><a href="registrar_cajas.php">Registrar Cajas</a></li>
                 <li class="menu-li"><a href="perfil.php">Perfil de Usuario</a></li>
                 <li class="menu-li"><a href="#" id="reset">Resetear turnos</a></li>
-                
+                <li class="menu-li"><a href="info_empresa.php" id="reset">Informacion de la empresa</a></li>
+                <li class="menu-li"><a href="agregar_videos.php" >Tabla de Videos</a></li>
+				<li class="menu-li"><a href="agregar_usuario.php" >Tabla de Usuario</a></li>
+				<li class="menu-li"><a href="agregar_admision.php" >Tabla de Admision</a></li>
+				<li class="menu-li"><a href="agregar_roles.php" >Tabla de Roles</a></li>
  
             </ul>
 
-        </div><!--contenedor-->
+        </div>
 
         <a href="logout.php" class="link-menu">Cerrar Sesi&oacute;n</a>
 
-    </div><!--contenedor principal-->
+    </div>
 
     <script src="js/funcionesGenerales.js"></script>
 
