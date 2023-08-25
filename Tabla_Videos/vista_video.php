@@ -38,9 +38,9 @@
                 <table class="table">
                     <thead class="table-success table-striped">
                         <tr>
-                            <th>id</th>
-                            <th>nombre</th>
-                            <th>extension</th>
+                            <td>id</td>
+                            <td>nombre</td>
+                            <td>extension</td>
                         </tr>
                     </thead>
                     <tbody>
@@ -50,12 +50,12 @@
                         ?>
                             <tr>
 
-                                <th><?php echo $row['id']?></th>
-                                <th><?php echo $row['nombre']?></th>
-                                <th><?php echo $row['extension']?></th>
+                                <td><?php echo $row['id']?></td>
+                                <td><?php echo $row['nombre']?></td>
+                                <td><?php echo $row['extension']?></td>
                                     
-                                <th><a href="actualizar.php?id=<?php echo $row['id'] ?>" class="btn btn-info">Editar</a></th>
-                                <th><a href="delete.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">Eliminar</a></th>
+                                <td><a href="actualizar.php?id=<?php echo $row['id'] ?>" class="btn btn-info">Editar</a></td>
+                                <td><a href="delete.php?id=<?php echo $row['id'] ?>" class="btn btn-danger">Eliminar</a></td>
                                                                         
                              </tr>
 

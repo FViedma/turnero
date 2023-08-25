@@ -123,8 +123,7 @@
                         <tr>
 						    <th>id</th>
                             <th>usuario</th>
-                            <th>password</th>
-                            <th>id_Adm</th>
+                            <th>id_Ven</th>
                             <th>id_rol</th>
                     
                             <th align="center" colspan="2">acciones</th>
@@ -138,7 +137,7 @@
 
                                 <th><?php echo $row['id']?></th>
                                 <th><?php echo $row['usuario']?></th>
-                                <th><?php echo $row['password']?></th>
+                                
                                 <th><?php echo $row['id_Adm']?></th>
                                 <th><?php echo $row['id_rol']?></th>
                                 
@@ -174,28 +173,28 @@
                 
                     
                     <FONT color="black">Nombre :</FONT></br>
-                    <input type="text" class="form-control mb-3" name="nombre" placeholder="Nombre">
+                    <input type="text" class="form-control mb-3" name="usuario" placeholder="Usuario">
 					<br></br>
 					<FONT color="black">Contraseña :</FONT></br>
                     <input type="password" class="form-control mb-3" name="password" placeholder="Password">
 					<br></br>
-					<FONT color="black">Admision :</FONT></br>
+					<FONT color="black">Ventanilla :</FONT></br>
                     <!--<input type="value" class="form-control mb-3" name="id_adm" placeholder="Id_Adm">-->
                     <?php
 
                         $sql="select * from cajas";
 						$error="Error al cargar las cajas";
-
+                        
 						$buscar=consulta($con,$sql,$error);
 
 					?>
 
                     <select name="caja" id="caja">
 
-                        <option value="ninguno">Selecciona un admision</option>
-
+                        <option value="ninguno">Selecciona una Ventanilla</option>
+                        
                         <?php
-
+                            
                             while($caja=mysqli_fetch_assoc($buscar)){
 								echo "<option value='$caja[id]'>$caja[nombre]</option>";
 							}
@@ -204,23 +203,25 @@
                     </select>
 					<br></br>
 					<FONT color="black">Rol :</FONT></br>
-                    <!--<input type="value" class="form-control mb-3" name="id_rol" placeholder="Id_Rol">-->
+                    <!--<select type="value" class="form-control mb-3" name="id_rol" placeholder="Id_Rol">-->
+                    
+  
                     <?php
 
                         $sql="select * from roles";
-						$error="Error al cargar las roles";
-
+						$error="Error al cargar los roles";
+                        
 						$buscar=consulta($con,$sql,$error);
 
 					?>
 
                     <select name="rol" id="rol">
-
+                        
                         <option value="ninguno">Selecciona un rol</option>
-
+                            
                         <?php
-
-                            while($rol=mysqli_fetch_assoc($buscar)){
+                            
+                            while($rol=mysqli_fetch_assoc($buscar)){ 
 								echo "<option value='$rol[id]'>$rol[nombre]</option>";
 							}
 						?>
@@ -228,7 +229,7 @@
                     </select>
                     <br></br>
                     
-                    <input type="submit" class="btn btn-primary" value="Enviar" style='width:70px; height:25px'>
+                    <input type="submit" id="editarUsuario" class="btn btn-primary" value="Enviar" style='width:70px; height:25px'>
 				
                 </div>
 

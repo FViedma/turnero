@@ -21,7 +21,7 @@
     <div class="container mt-5">
         <div class="row">
             <div class="col-md-3">
-                <h1>Ingrese datos de Admision</h1>
+                <h1>Ingrese datos de Ventanilla</h1>
                 <form action="insertar_a.php" method="POST">
 
                     <input type="text" class="form-control mb-3" name="nombre" placeholder="Nombre">
@@ -38,7 +38,7 @@
                     <thead class="table-success table-striped">
                         <tr>
                             <th>id</th>
-                            <th>nombre</th>
+                            <th>Ventana</th>
                             <th>Nombre_De_Usuario</th>
                             <th>fecha_de_registro</th>
                             

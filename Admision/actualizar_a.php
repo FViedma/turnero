@@ -36,7 +36,7 @@ $row = mysqli_fetch_array($query);
                 <FONT color="black">Nombre de Usuario:</FONT><br></br>
                 <input type="text" class="form-control mb-3" name="nombre_de_usuario" placeholder="Nombre_De_Usuario" value="<?php echo $row['nombre_de_usuario']  ?>"><br></br>
 
-                <input type="submit" class="btn btn-primary btn-block" style='width:80px; height:25px' value="Actualizar">
+                <input type="submit" class="btn btn-primary btn-block" id="actualizarVentana" style='width:80px; height:25px' value="Actualizar"><br></br>
 
                 <button class="cerrar" id="cerrarCambioAdmision" style='width:70px; height:25px'>Cerrar</button>
             </form>

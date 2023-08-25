@@ -50,7 +50,9 @@
 
                     <select name="caja" id="caja">
 
-                        <option value="ninguno">Selecciona un admision</option>
+                        <option value="1">Selecciona un admision</option>
+                            <option value="1">Admision</option>
+                            <option value="2">Cajero</option>
 
                         <?php
 
@@ -76,7 +78,7 @@
                     <select name="rol" id="rol">
 
                         <option value="ninguno">Selecciona un rol</option>
-
+                            
                         <?php
 
                             while($rol=mysqli_fetch_assoc($buscar)){
@@ -87,9 +89,9 @@
                     </select>
                     <br></br>
             
-                <input type="submit" class="btn btn-primary btn-block" style='width:80px; height:25px' value="Actualizar">
+                <input type="submit" class="btn btn-primary btn-block" id="actualizarUsuario" style='width:80px; height:25px' value="Actualizar"><br></br>
 
-                <button class="cerrar" id="cerrarCambioRoles" style='width:70px; height:25px'>Cerrar</button> 
+                <button class="cerrar" id="cerrarCambioUsuario" style='width:70px; height:25px'>Cerrar</button> 
 
             </form>
             

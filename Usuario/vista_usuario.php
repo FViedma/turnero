@@ -29,7 +29,7 @@
                     <input type="text" class="form-control mb-3" name="usuario" placeholder="Usuario">
                     <input type="password" class="form-control mb-3" name="password" placeholder="Password">
                     <input type="select" class="form-control mb-3" name="id_adm" placeholder="Id_Adm">
-                    <input type="select" class="form-control mb-3" name="id_rol" placeholder="Id_Rol">
+                    <input type="select" class="form-control mb-3" name="id_rol" placeholder="Id_Rol" value="<?php echo $id_rol = $_POST['id_rol'] ?>">
 
                     <input type="submit" class="btn btn-primary">
 

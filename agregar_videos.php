@@ -114,7 +114,7 @@
                     <thead class="table-success table-striped">
                         <tr>
                             <th>id</th>
-                            <th>nombre</th>
+                            <th>nombre</th> 
                             <th>extension</th>
                             <th align="center" colspan="2">acciones</th>
                         </tr>
@@ -125,11 +125,11 @@
                         ?>
                             <tr>
 
-                                <th><?php echo $row['id'] ?></th>
-                                <th><?php echo $row['nombre'] ?></th>
-                                <th><?php echo $row['extension'] ?></th>
-                                <th><a href="tabla_videos/actualizar.php?id=<?php echo $row['id'] ?>"href="#" class="btn btn-info">Editar</a></th>
-                                <th><a href="tabla_videos/delete.php?id=<?php echo $row['id'] ?>" href="#" class="btn btn-danger">Eliminar</a></th>
+                                <td><?php echo $row['id'] ?></td>
+                                <td><?php echo $row['nombre'] ?></th>
+                                <td><?php echo $row['extension'] ?></td>
+                                <td><a href="tabla_videos/actualizar.php?id=<?php echo $row['id'] ?>"href="#" class="btn btn-info">Editar</a></td>
+                                <td><a href="tabla_videos/delete.php?id=<?php echo $row['id'] ?>" href="#" class="btn btn-danger">Eliminar</a></td>
                             </tr>
                         <?php
                         }
@@ -159,7 +159,7 @@
 
                     <input type="file" name="video" id="video" placeholder="agregar video mp4">
                     <br></br>
-                    <input type="submit" class="btn btn-primary" value="Enviar" style='width:70px; height:25px'>
+                    <input type="submit" id= "editarVideo" class="btn btn-primary" value="Enviar" style='width:70px; height:25px'>
                         
 
                 </div>

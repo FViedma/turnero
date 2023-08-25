@@ -33,7 +33,7 @@
                 <FONT color="black">Nombre:</FONT><br></br>
                 <input type="text" class="form-control mb-3" name="nombre" placeholder="Nombre" value="<?php echo $row['nombre']  ?>"><br></br>
             
-                <input type="submit" class="btn btn-primary btn-block" style='width:80px; height:25px' value="Actualizar">
+                <input type="submit" class="btn btn-primary btn-block" id="actualizarRoles" style='width:80px; height:25px' value="Actualizar"><br></br>
 
                 <button class="cerrar" id="cerrarCambioRoles" style='width:70px; height:25px'>Cerrar</button>
 

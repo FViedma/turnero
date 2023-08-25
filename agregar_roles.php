@@ -167,7 +167,7 @@
                     <input type="text" class="form-control mb-3" name="nombre" placeholder="Nombre">
                     <br></br>
                     
-                    <input type="submit" class="btn btn-primary" value="Enviar" style='width:70px; height:25px'>
+                    <input type="submit" id="editarRoles" class="btn btn-primary" value="Enviar" style='width:70px; height:25px'>
         
         
 

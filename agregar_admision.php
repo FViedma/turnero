@@ -22,7 +22,7 @@
     <div class="contenedor-principal">
         <div class="contenedor-info" id="info-admision">
 
-            <h1>Registro del Admisi&oacute;n</h1>
+            <h1>Registro de Ventanilla</h1>
 
             <?php
 
@@ -119,7 +119,7 @@
                     <thead class="table-success table-striped">
                         <tr>
                             <th>id</th>
-                            <th>nombre</th>
+                            <th>Ventana</th>
                             <th>Nombre_De_Usuario</th>
                            
                             <th align="center" colspan="2">acciones</th>
@@ -160,7 +160,7 @@
         <form action="Admision/insertar_a.php" method="post" name="formLogin" id="form-cambiar-admision" class="form-editar" enctype="multipart/form-data">
        
 
-            <h1>Agregar Admisiones</h1>
+            <h1>Agregar Ventanas</h1>
 
             
 
@@ -176,7 +176,7 @@
                     <input type="text" class="form-control mb-3" name="nombre_de_usuario" placeholder="Nombre_De_Usuario">
                     <br></br>
         
-                    <input type="submit" class="btn btn-primary" value="Enviar" style='width:70px; height:25px'>
+                    <input type="submit" id="editarVentana" class="btn btn-primary" value="Enviar" style='width:70px; height:25px'>
         
                 </div>
 

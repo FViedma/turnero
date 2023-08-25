@@ -30,7 +30,7 @@
                 <li class="menu-li"><a href="info_empresa.php" id="reset">Informacion de la empresa</a></li>
                 <li class="menu-li"><a href="agregar_videos.php" >Tabla de Videos</a></li>
 				<li class="menu-li"><a href="agregar_usuario.php" >Tabla de Usuario</a></li>
-				<li class="menu-li"><a href="agregar_admision.php" >Tabla de Admision</a></li>
+				<li class="menu-li"><a href="agregar_admision.php" >Tabla de Ventanilla</a></li>
 				<li class="menu-li"><a href="agregar_roles.php" >Tabla de Roles</a></li>
  
             </ul>
