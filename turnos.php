@@ -68,6 +68,22 @@
                         <h1 class="nombre-empresa"><?php echo $info['nombre'];?> Bienvenido</h1>
                 
 		</header>
+                <div class="contenedor-permiso">
+
+                    <div class="contenedor-permiso">
+                        <select name="listaPermiso" id="listaPermisos" hidden>
+                            <?php
+                            $query = mysqli_query($con, "SELECT * FROM permisos") or die(mysqli_error($con)); //mysql_error 
+
+                            while ($row = mysqli_fetch_array($query)) {
+                                echo "<option value='" . $row['nombre'] . $row['apellidos'] . $row['fecha_permiso'] .  $row['fecha_retorno'] ."'></option>";
+                            }
+                            ?>
+                        </select>
+
+                    </div>
+
+                </div>
 
                 <div class="contenedor-video">
 

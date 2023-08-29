@@ -32,6 +32,7 @@
 				<li class="menu-li"><a href="agregar_usuario.php" >Tabla de Usuario</a></li>
 				<li class="menu-li"><a href="agregar_admision.php" >Tabla de Ventanilla</a></li>
 				<li class="menu-li"><a href="agregar_roles.php" >Tabla de Roles</a></li>
+                <li class="menu-li"><a href="agregar_permisos.php" >Tabla de Permisos</a></li>
  
             </ul>
 
