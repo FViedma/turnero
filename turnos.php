@@ -67,24 +67,7 @@
                         
                         <h1 class="nombre-empresa"><?php echo $info['nombre'];?> Bienvenido</h1>
                 
-		</header>
-                <div class="contenedor-permiso">
-
-                    <div class="contenedor-permiso">
-                        <select name="listaPermiso" id="listaPermisos" hidden>
-                            <?php
-                            $query = mysqli_query($con, "SELECT * FROM permisos") or die(mysqli_error($con)); //mysql_error 
-
-                            while ($row = mysqli_fetch_array($query)) {
-                                echo "<option value='" . $row['nombre'] . $row['apellidos'] . $row['fecha_permiso'] .  $row['fecha_retorno'] ."'></option>";
-                            }
-                            ?>
-                        </select>
-
-                    </div>
-
-                </div>
-
+		            </header>
                 <div class="contenedor-video">
 
                     <div class="contenedor-reproductor">
@@ -94,6 +77,13 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 echo "<option value='" . $row['nombre'] . $row['extension'] . "'></option>";
+                            }
+                            ?>
+                            <?php
+                            $query = mysqli_query($con, "SELECT * FROM permisos") or die(mysqli_error($con)); //mysql_error 
+
+                            while ($row = mysqli_fetch_array($query)) {
+                                echo "<option value='" . $row['nombres'] . $row['apellidos'] . $row['fecha_permiso'] . $row['fecha_retorno'] ."'></option>";
                             }
                             ?>
                         </select>
@@ -111,7 +101,7 @@
                             ?>
                         </video>
 
-
+                        
 
                     </div>
 
@@ -149,7 +139,7 @@
     <script src="js/funcionesGenerales.js"></script>
     <script src="js/websocket.js"></script>
     <script src="js/video.js"></script>
-
+    <script src="js/caja.js"></script>
 </body>
 
 </html>
