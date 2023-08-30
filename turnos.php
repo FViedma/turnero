@@ -79,13 +79,6 @@
                                 echo "<option value='" . $row['nombre'] . $row['extension'] . "'></option>";
                             }
                             ?>
-                            <?php
-                            $query = mysqli_query($con, "SELECT * FROM permisos") or die(mysqli_error($con)); //mysql_error 
-
-                            while ($row = mysqli_fetch_array($query)) {
-                                echo "<option value='" . $row['nombres'] . $row['apellidos'] . $row['fecha_permiso'] . $row['fecha_retorno'] ."'></option>";
-                            }
-                            ?>
                         </select>
 
                         <video id="videoPlayer" width="500" controls autoplay>
@@ -139,7 +132,6 @@
     <script src="js/funcionesGenerales.js"></script>
     <script src="js/websocket.js"></script>
     <script src="js/video.js"></script>
-    <script src="js/caja.js"></script>
 </body>
 
 </html>
