@@ -9,6 +9,7 @@
         <link rel="stylesheet" type="text/css" href="css/generales.css">
         <link rel="stylesheet" type="text/css" href="css/turnos.css">
         <link rel="stylesheet" type="text/css" href="css/responsivo-turnos.css">
+        
     
     </head>
 	<body>
@@ -93,12 +94,22 @@
 
                             ?>
                         </video>
-
-                        
-
                     </div>
 
                 </div>
+            </div>
+                
+            <div class="Contenedor-permisos">
+                <select name="listaPermisos" id=listaPermisos hidden>
+                    <?php
+                    $query=mysqli_query($con, "SELECT * from permisos") or die(mysqli_error($con));
+
+                    while ($row = mysqli_fetch_array($query)){
+                        echo "<option value='". $row['nombres'] . $row['apellidos'] . $row['fecha_permiso'] . $row['fecha_retorno'] ."'></option>"; 
+                    }
+                    ?>
+
+                </select>
 
             </div>
 
@@ -132,6 +143,7 @@
     <script src="js/funcionesGenerales.js"></script>
     <script src="js/websocket.js"></script>
     <script src="js/video.js"></script>
+    <script src="js/permisos.js"></script>
 </body>
 
 </html>
