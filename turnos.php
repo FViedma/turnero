@@ -40,7 +40,7 @@
 
             
             </header>
-
+            
             <section class="contenido">
                         
                 <div class="contenido-izquierda">
@@ -49,15 +49,22 @@
                         require_once('funciones/conexion.php');
                         require_once('funciones/funciones.php');
                         
-                        
+                        $sql="SELECT *  FROM permisos";
+                        $error_msg = "No existen permisos";
+
                         //datos de la empresa
                         $sqlE = "select * from info_empresa";
                         $errorE = "Error al cargar datos de la empresa ";
                         $buscarE = consulta($con,$sqlE,$errorE);
                             
                         $info = mysqli_fetch_assoc($buscarE); 
-                    ?>
+                        
+                        $query=consulta($con,$sql,$error_msg);
 
+                        $mensaje = "";
+                    
+                    ?>
+                    
                     <header class="contenedor-logo">
 
                         <div class="logo-empresa">
@@ -67,10 +74,11 @@
                         </div>
                         
                         <h1 class="nombre-empresa"><?php echo $info['nombre'];?> Bienvenido</h1>
-                
+                        
 		            </header>
+                    
                 <div class="contenedor-video">
-
+                    
                     <div class="contenedor-reproductor">
                         <select name="listaVideos" id="listaVideos" hidden>
                             <?php
@@ -80,8 +88,10 @@
                                 echo "<option value='" . $row['nombre'] . $row['extension'] . "'></option>";
                             }
                             ?>
+                            
                         </select>
-
+                        
+                        
                         <video id="videoPlayer" width="500" controls autoplay>
                             <?php
 
@@ -89,30 +99,41 @@
 
                             while ($row = mysqli_fetch_array($query)) {
                                 echo "<source src='videos/" . $row['nombre'] . $row['extension'] . "' type='video/mp4'></source>";
-                                // 
                             }
-
+                              
                             ?>
+                            
                         </video>
+                        <body>
+                            <table id="miTabla">
+                                <thead>
+                                    <tr>
+                                        <th>Nombres</th>
+                                        <th>Apellidos</th>
+                                        <th>Fecha_Permiso</th>
+                                        <th>Fecha_Retorno</th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <?php
+                                    $query = mysqli_query($con, "SELECT * FROM permisos") or die(mysqli_error($con)); //mysql_error 
+                                    $datos = array();    
+            
+                                    while ($row = mysqli_fetch_array($query)) {
+                                        echo "<tr>";
+                                        echo "<td>" . $row['nombres'] . "</td>";
+                                        echo "<td>" . $row['apellidos'] . "</td>";
+                                        echo "<td>" . $row['fecha_permiso'] . "</td>";
+                                        echo "<td>" . $row['fecha_retorno'] . "</td>";
+                                        echo "</tr>";
+                                    }
+                                    $con->close();
+                                    ?>
+                                </tbody>
+                            </table>
                     </div>
-
                 </div>
             </div>
-                
-            <div class="Contenedor-permisos">
-                <select name="listaPermisos" id=listaPermisos hidden>
-                    <?php
-                    $query=mysqli_query($con, "SELECT * from permisos") or die(mysqli_error($con));
-
-                    while ($row = mysqli_fetch_array($query)){
-                        echo "<option value='". $row['nombres'] . $row['apellidos'] . $row['fecha_permiso'] . $row['fecha_retorno'] ."'></option>"; 
-                    }
-                    ?>
-
-                </select>
-
-            </div>
-
             <div class="contenido-derecha">
 
                 <div class="contenedor-turnos">
@@ -127,13 +148,16 @@
                 </div><!--contenedor turnos-->
 
             </div>
+            
 
         </section><!--contenido-->
+
+        
 
         <footer class="footer">
 
             <marquee class="noticias">Bienvenidos al Hospital Clínico Viedma, sistema de ordenamiento de filas proximamente en funcionamiento.</marquee>
-
+            <img src=""> 
         </footer>
 
     </div><!--contenedor principal-->
