@@ -207,9 +207,6 @@
 					<br></br>
 					<FONT color="black">Rol :</FONT></br>
                     <!--<select type="value" class="form-control mb-3" name="id_rol" placeholder="Id_Rol">-->
-                    <!--<input type="value" class="form-control mb-3" name="id_rol" placeholder="Id_Rol">-->
-                        
-                       
   
                     <?php
 

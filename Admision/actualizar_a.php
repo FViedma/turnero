@@ -6,7 +6,7 @@ $sql = "SELECT * FROM cajas WHERE id='$id'";
 
 $query = mysqli_query($con, $sql);
 
-$caj = mysqli_fetch_array($query);
+$caja = mysqli_fetch_array($query);
 ?>
 <!DOCTYPE html>
 <html lang="en">

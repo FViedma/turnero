@@ -39,7 +39,6 @@
 
             
             </header>
-
             <section class="contenido">
                         
                 <div class="contenido-izquierda">
@@ -88,7 +87,6 @@
                             }
                             ?>
                         </select>
-
                         <video id="videoPlayer" width="500" controls autoplay>
                             <?php
 
@@ -97,7 +95,6 @@
                             while ($row = mysqli_fetch_array($query)) {
                                 echo "<source src='videos/" . $row['nombre'] . $row['extension'] . "' type='video/mp4'></source>";
                             }
-
                             ?>
                         </video>
                         <body>

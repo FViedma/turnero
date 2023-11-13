@@ -24,7 +24,6 @@
                 	<li class="menu-li"><a href="solicitar_turno.php">Turnos</a></li>
 					<li class="menu-li"><a href="login.php" >Administración</a></li>
 					<li class="menu-li"><a href="turnos.php" >Visualizador</a></li>
-					
                 </ul>
 
             </div><!--contenedor-->
