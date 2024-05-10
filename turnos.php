@@ -177,7 +177,6 @@
                                         <th>Apellidos</th>
                                         <th>Fecha_Permiso</th>
                                         <th>Fecha_Retorno</th>
-                                        <th>Motivo</th>
                                     </tr>
                                 </thead>
                                 <tbody>
@@ -188,7 +187,6 @@
                                         echo '<td>' . $data['lastName'] . '</td>';
                                         echo '<td>' . substr($data['start'], 0, 10) . '</td>';
                                         echo '<td>' . substr($data['end'], 0, 10) . '</td>';
-                                        echo '<td>' . $data['notes'] . '</td>';
                                         echo '</tr>';
                                     }
                                     ?>
@@ -218,12 +216,6 @@
             </div>
 
         </section><!--contenido-->
-
-        <footer class="footer">
-
-            <marquee class="noticias">Bienvenidos al Hospital Clínico Viedma, sistema de ordenamiento de filas proximamente en funcionamiento.</marquee>
-            <img src="">
-        </footer>
 
     </div><!--contenedor principal-->
 

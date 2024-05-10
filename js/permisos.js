@@ -25,9 +25,8 @@ function mostrarSiguienteFila() {
     if (filaActual + 3 < numRows) {
         tableRows[filaActual + 1].style.display = "table-row"; // Mostrar la siguiente fila
         tableRows[filaActual + 2].style.display = "table-row"; // Mostrar la siguiente siguiente fila
-        tableRows[filaActual + 3].style.display = "table-row"; // Mostrar la siguiente siguiente fila
     }
-    filaActual += 4;
+    filaActual += 3;
 }
 
 interval = setInterval(mostrarSiguienteFila, 15000); 
