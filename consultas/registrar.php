@@ -218,7 +218,7 @@ if (isset($_POST['registrar'])) {
 				//seleccionar los turnos en la tabla atencion que correspondan a la caja y que estan en o en la columna atendido
 				$sqlTurnosAtencion = "select id,turno from atencion where atendido='0' and idCaja='$idCaja'";
 				$error = "Error al seleccionar el turno en atencion ";
-				return $buscarTurnosAtencion = consulta($con, $sqlTurnosAtencion, $error);
+				return consulta($con, $sqlTurnosAtencion, $error);
 			}
 
 			//funcion para actualizar las atenciones de turnos
@@ -226,7 +226,7 @@ if (isset($_POST['registrar'])) {
 			{
 				$sql = "update atencion set atendido='1' where turno='$turno' and idCaja='$idCaja' and id=$id_atencion";
 				$error = "Error al actualizar  el turno en atencion";
-				$editar = consulta($con, $sql, $error);
+				consulta($con, $sql, $error);
 			}
 
 			//consultar los turnos en atencion

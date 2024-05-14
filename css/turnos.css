@@ -310,16 +310,3 @@ tbody tr:hover {
 	min-width: 300px;
 	height: 10%;
 }
-
-.noticias {
-	width: 100%;
-	height: 50px;
-	background: #3324F9;
-	color: white;
-	display: block;
-	padding: 20px 10px;
-	marquee-direction: forward;
-	marquee-speed: slow;
-	marquee-play-count: infinite;
-	marquee-style: scroll;
-}
