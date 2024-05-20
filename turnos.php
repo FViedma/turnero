@@ -225,7 +225,6 @@
     <script src="js/websocket.js"></script>
     <script src="js/video.js"></script>
     <script src="js/permisos.js"></script>
-    <!--<script src="js/turnos.js"></script>-->
 
 </body>
 

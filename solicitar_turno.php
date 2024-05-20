@@ -22,52 +22,35 @@
 		require_once('funciones/conexion.php');
 		require_once('funciones/funciones.php');
 
-		$turno = "";
-		$turnoAm = "";
-		$turnoD = "";
-		//turnos
-		$sqlG = "select turno from turnos order by id desc";
-		$error = "Error al seleccionar el turno";
+		// Consulta para obtener los últimos turnos de cada tipo
+		$sql = "SELECT MAX(id), tipo, turno AS ultimo_turno FROM turnos GROUP BY id";
+		$error = "Error al seleccionar los turnos";
 
-		$buscar = consulta($con, $sqlG, $error);
+		$buscar = consulta($con, $sql, $error);
 
-		$resultado = mysqli_fetch_assoc($buscar);
-		$noResultados = mysqli_num_rows($buscar);
+		// Inicialización de variables
+		$fichas = "000";
+		$turno = "000";
+		$turnoAm = "000";
+		$turnoD = "000";
 
-		if ($noResultados == 0) {
-			$turno = "000";
-		} else {
-			$turno = $resultado['turno'];
+		// Procesamiento de los resultados
+		while ($resultado = mysqli_fetch_assoc($buscar)) {
+			switch ($resultado['tipo']) {
+				case 'fichas':
+					$fichas = $resultado['ultimo_turno'];
+					break;
+				case 'general':
+					$turno = $resultado['ultimo_turno'];
+					break;
+				case 'adultos':
+					$turnoAm = $resultado['ultimo_turno'];
+					break;
+				case 'discapacidad':
+					$turnoD = $resultado['ultimo_turno'];
+					break;
+			}
 		}
-
-		$sqlA = "select turno from turnoadultos order by id desc";
-		$error = "Error al seleccionar el turno";
-
-		$buscarA = consulta($con, $sqlA, $error);
-
-		$resultado = mysqli_fetch_assoc($buscarA);
-		$noResultados = mysqli_num_rows($buscarA);
-
-		if ($noResultados == 0) {
-			$turnoAm = "000";
-		} else {
-			$turnoAm = $resultado['turno'];
-		}
-
-		$sqlD = "select turno from turnodiscapacitados order by id desc";
-		$error = "Error al seleccionar el turno";
-
-		$buscarD = consulta($con, $sqlD, $error);
-
-		$resultado = mysqli_fetch_assoc($buscarD);
-		$noResultados = mysqli_num_rows($buscarD);
-
-		if ($noResultados == 0) {
-			$turnoD = "000";
-		} else {
-			$turnoD = $resultado['turno'];
-		}
-
 		//datos de la empresa
 		$sqlE = "select * from info_empresa";
 		$errorE = "Error al cargar datos de la empresa ";
@@ -91,6 +74,11 @@
 
 			<div class="clear"></div>
 
+			<span class="datos-turno">Turno: <span id="fichas"><?php echo $fichas; ?></span></span>
+
+			<input type="submit" name="Fichas" id="Fichas" value="Fichas">
+			<input type="hidden" name="turnoFichas" id="turnoFichas" value=""></br>
+
 			<span class="datos-turno">Turno: <span id="turno"><?php echo $turno; ?></span></span>
 
 			<input type="submit" name="General" id="General" value="General">
@@ -98,7 +86,7 @@
 
 			<span class="datos-turno">Turno: <span id="turnoA"><?php echo $turnoAm; ?></span></span>
 
-			<input type="submit" name="Adulto_Mayor" id="Adulto_Mayor" value="Adulto Mayor">
+			<input type="submit" name="Adulto_Mayor" id="Adulto_Mayor" value="Adulto_Mayor">
 			<input type="hidden" name="turnoAdulto" id="turnoAdulto" value=""></br>
 
 			<span class="datos-turno">Turno: <span id="turnoD"><?php echo $turnoD; ?></span></span>

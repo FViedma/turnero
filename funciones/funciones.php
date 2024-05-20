@@ -27,7 +27,6 @@ function convertir_fecha($fecha){
 	}else{
 		$dato=explode('-',$dato[0]);
 		$meses=array('enero','febrero','marzo','abril','mayo','junio','julio','agosto','septiembre','octubre','noviembre','diciembre');
-		$mes='';
 		$mesCovertido=str_replace('0','',$dato[1]);
 		echo $dato[2]." de ".$meses[$mesCovertido-1]." del ".$dato[0];
 	}

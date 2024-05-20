@@ -55,6 +55,15 @@ include('check_role.php');
 
 			<span class="datos-usuario">Admisionista: <?php echo $_SESSION['usuario']; ?></span>
 
+			<!-- atencion Fichas -->
+			<span class="datos-turno">Turno: <span id="fichas">000</span></span>
+
+			<input type="submit" class="atender" name="atenderF" id="atenderF" value="Fichas">
+			<input type="hidden" name="fichas" id="noFichas" value="<?php echo $turno; ?>">
+			<input type="hidden" id="idCaja" value="<?php echo $_SESSION['idCaja']; ?>">
+			<input type="hidden" id="ocupado" value="false">
+			<span id="mensajesF"></span></br>
+			
 			<!-- atencion general -->
 			<span class="datos-turno">Turno: <span id="turno">000</span></span>
 
@@ -62,8 +71,8 @@ include('check_role.php');
 			<input type="hidden" name="turno" id="noTurno" value="<?php echo $turno; ?>">
 			<input type="hidden" id="idCaja" value="<?php echo $_SESSION['idCaja']; ?>">
 			<input type="hidden" id="ocupado" value="false">
-			<span id="mensajesG"></span></br></br>
-			<br>
+			<span id="mensajesG"></span></br>
+		
 
 			<!-- atencion adultos mayores -->
 			<span class="datos-turno">Turno: <span id="turnoAm">000</span></span>
@@ -72,7 +81,7 @@ include('check_role.php');
 			<input type="hidden" name="turnoAm" id="noTurnoAm" value="<?php echo $turno; ?>">
 			<input type="hidden" id="idCaja" value="<?php echo $_SESSION['idCaja']; ?>">
 			<input type="hidden" id="ocupado" value="false">
-			<span id="mensajesAm"></span></br></br>
+			<span id="mensajesAm"></span></br>
 
 			<!-- atencion discapacitados -->
 			<span class="datos-turno">Turno: <span id="turnoD">000</span></span>
@@ -81,7 +90,7 @@ include('check_role.php');
 			<input type="hidden" name="turnoD" id="noTurnoD" value="<?php echo $turno; ?>">
 			<input type="hidden" id="idCaja" value="<?php echo $_SESSION['idCaja']; ?>">
 			<input type="hidden" id="ocupado" value="false">
-			<span id="mensajesD"></span></br></br>
+			<span id="mensajesD"></span></br>
 
 			<div class="contenedor-img-status"><img src="img/desconectado.png" id="imgStatus"></div>
 			<br>

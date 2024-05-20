@@ -35,6 +35,19 @@
 	padding:5px;
 	text-align:center;
 }
+#Fichas{
+	display:block;
+	margin:0px auto;
+	margin-top:2%;
+	width:30%;
+	min-width:170px;
+	height:50px;
+	background-color:#1073C4;
+	color:white;
+	font-size:20px;
+	cursor:pointer;
+	border:none;
+}
 #General{
 	display:block;
 	margin:0px auto;

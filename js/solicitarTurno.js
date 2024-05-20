@@ -2,11 +2,15 @@ agregarEvento(window, 'load', iniciar, false);
 
 function iniciar() {
 
+	var Fichas = document.getElementById('Fichas');
+
 	var General = document.getElementById('General');
 
 	var Adulto_Mayor = document.getElementById('Adulto_Mayor');
 
 	var Discapacidad = document.getElementById('Discapacidad');
+
+	agregarEvento(Fichas, 'click', detectarAccion, false);
 
 	agregarEvento(General, 'click', detectarAccion, false);
 
@@ -28,6 +32,14 @@ function detectarAccion(e) {
 	
 	switch (id) {
 		
+		case 'Fichas':
+			
+			funcion = procesarSolicitud;
+			fichero = 'consultas/registrar.php';
+			datos = 'registrar=fichas';
+
+			break;
+
 		case 'General':
 			
 			funcion = procesarSolicitud;
@@ -63,11 +75,15 @@ function detectarAccion(e) {
 function procesarSolicitud() {
 	if (conexion.readyState) {
 		var jsonData = JSON.parse(conexion.responseText);
+		var noFichas = document.getElementById('fichas');
 		var noTurno = document.getElementById('turno');
 		var noTurnoA = document.getElementById('turnoA');
 		var noTurnoD = document.getElementById('turnoD');
 		var tipoAtencion = jsonData.tipoAtencion;
 		switch (tipoAtencion) {
+			case "fichas":
+				noFichas.innerHTML = jsonData.turno;
+				break;
 			case "general":
 				noTurno.innerHTML = jsonData.turno;
 				break;

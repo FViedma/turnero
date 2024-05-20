@@ -2,12 +2,14 @@ agregarEvento(window, 'load', iniciar, false);
 
 function iniciar() {
 
+	var atenderF = document.getElementById('atenderF');
 	var atender = document.getElementById('atender');
 	var atenderAm = document.getElementById('atenderAm');
 	var atenderD = document.getElementById('atenderD');
+	agregarEvento(atenderF, 'click', detectarAccion, false);
 	agregarEvento(atender, 'click', detectarAccion, false);
 	agregarEvento(atenderAm, 'click', detectarAccion, false);
-    agregarEvento(atenderD, 'click', detectarAccion, false);
+	agregarEvento(atenderD, 'click', detectarAccion, false);
 }
 
 var jsonFormat = '';
@@ -27,6 +29,9 @@ function detectarAccion(e) {
 	}
 
 	switch (id) {
+		case 'atenderF':
+			result = configurarAtencion("fichas");
+			break;
 		case 'atender':
 			result = configurarAtencion("general");
 			break;
@@ -46,6 +51,9 @@ function detectarAccion(e) {
 function configurarAtencion(tipoAtencion) {
 	var turno = "";
 	switch (tipoAtencion) {
+		case "fichas":
+			var turno = document.getElementById('noFichas').value;
+			break;
 		case "general":
 			var turno = document.getElementById('noTurno').value;
 			break;
@@ -82,8 +90,11 @@ function procesarAtencion() {
 		socket.send(data);
 
 		var jsonData = JSON.parse(data);//decodificar los datos en formato json
-
 		switch (jsonData.tipoAtencion) {
+			case "fichas":
+				var turno = document.getElementById('fichas');//turno que se muestra en la pantalla
+				var noTurno = document.getElementById('noFichas');//control input noTurno
+				break;
 			case "general":
 				var turno = document.getElementById('turno');//turno que se muestra en la pantalla
 				var noTurno = document.getElementById('noTurno');//control input noTurno
@@ -100,12 +111,20 @@ function procesarAtencion() {
 		turno.innerHTML = jsonData.turno;
 		noTurno.value = jsonData.turno;
 
+		var mensajesF = document.getElementById('mensajesF');
 		var mensajesG = document.getElementById('mensajesG');
 		var mensajesAm = document.getElementById('mensajesAm');
 		var mensajesD = document.getElementById('mensajesD');
 
 		//poner mensajes de error o de aviso
 		switch (jsonData.tipoAtencion) {
+			case "fichas":
+				if (jsonData.status == 'error' || jsonData.status == 'mensaje') {
+					mensajesF.innerHTML = jsonData.mensaje;
+				} else {
+					mensajesF.innerHTML = "";
+				}
+				break;
 			case "general":
 				if (jsonData.status == 'error' || jsonData.status == 'mensaje') {
 					mensajesG.innerHTML = jsonData.mensaje;

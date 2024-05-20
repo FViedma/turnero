@@ -9,30 +9,25 @@ if (isset($_POST['registrar'])) {
 		case 'reset-turnos':
 			$fecha = date("Y-m-d H:i:s");
 			$turno = "000";
-			$sql1 = "INSERT INTO turnos (turno, fechaRegistro) values('$turno','$fecha')";
-			$error = "Error al resetear el turno";
-			$registrar = consulta($con, $sql1, $error);
-			$sql2 = "INSERT INTO turnoadultos (turno, fechaRegistro) values('$turno','$fecha')";
-			$error = "Error al resetear el turno";
-			$registrar = consulta($con, $sql2, $error);
-			$sql3 = "INSERT INTO turnodiscapacitados (turno, fechaRegistro) values('$turno','$fecha')";
-			$error = "Error al resetear el turno";
-			$registrar = consulta($con, $sql3, $error);
-
-			if ($registrar == true) {
-				$respuesta = array('status' => 'correcto', 'mensaje' => 'Turno registrado', 'turno' => $turno);
-			} else {
-				$respuesta = array('status' => 'error', 'mensaje' => 'Error al registrar el turno', 'turno' => 000);
+			$tipos = ["fichas", "general", "ädultos", "discapacidad"];
+			$respuesta = array('status' => 'correcto', 'mensaje' => 'Todas las consultas fueron realizadas correctamente');
+			foreach ($tipos as $tipo) {
+				$sql1 = "INSERT INTO turnos (turno, fechaRegistro, tipo) VALUES ('$turno', '$fecha', '$tipo')";
+				$error = "Error al resetear el turno";
+				$registrar = consulta($con, $sql1, $error);
 			}
+			if (!$registrar) {
+				$respuesta = array('status' => 'error', 'mensaje' => 'Error al registrar al menos uno de los turnos');
+			} 
 			break;
-		case 'turno':
-			$letra = "G-";
+		case 'fichas':
+			$letra = "F-";
 			$sql = "select id from turnos";
 			$error = "Error al registrar el turno";
 			$buscar = consulta($con, $sql, $error);
 			$noTurno = mysqli_num_rows($buscar);
 			if ($noTurno > 0) {
-				$sql = "select turno from turnos order by id desc";
+				$sql = "select turno from turnos where tipo = 'fichas' order by id desc";
 				$error = "Error al seleccionar el turno";
 				$buscar = consulta($con, $sql, $error);
 				$resultado = mysqli_fetch_assoc($buscar);
@@ -50,7 +45,43 @@ if (isset($_POST['registrar'])) {
 			}
 
 			$fecha = date("Y-m-d H:i:s");
-			$sql = "insert into turnos (turno,fechaRegistro) values ('$turno','$fecha')";
+			$sql = "insert into turnos (turno,fechaRegistro,tipo) values ('$turno','$fecha','fichas')";
+			$error = "Error al registrar el turno";
+			$registrar = consulta($con, $sql, $error);
+
+			if ($registrar == true) {
+				$respuesta = array('status' => 'correcto', 'mensaje' => 'Turno registrado', 'turno' => $turno, 'tipoAtencion' => 'fichas',);
+			} else {
+				$respuesta = array('status' => 'error', 'mensaje' => 'Error al registrar el turno', 'turno' => 000);
+			}
+			// printTicket($fecha, $turno, $letra);
+			break;
+		case 'turno':
+			$letra = "G-";
+			$sql = "select id from turnos";
+			$error = "Error al registrar el turno";
+			$buscar = consulta($con, $sql, $error);
+			$noTurno = mysqli_num_rows($buscar);
+			if ($noTurno > 0) {
+				$sql = "select turno from turnos where tipo = 'general' order by id desc";
+				$error = "Error al seleccionar el turno";
+				$buscar = consulta($con, $sql, $error);
+				$resultado = mysqli_fetch_assoc($buscar);
+				$turno = $resultado['turno'] + 1;
+
+				if ($turno >= 10 && $turno < 100) {
+					$turno = "0" . $turno;
+				} else if ($turno >= 100) {
+					$turno;
+				} else {
+					$turno = "00" . $turno;
+				}
+			} else {
+				$turno = "00" . "1";
+			}
+
+			$fecha = date("Y-m-d H:i:s");
+			$sql = "insert into turnos (turno,fechaRegistro,tipo) values ('$turno','$fecha','general')";
 			$error = "Error al registrar el turno";
 			$registrar = consulta($con, $sql, $error);
 
@@ -63,12 +94,12 @@ if (isset($_POST['registrar'])) {
 			break;
 		case 'turnoAdulto':
 			$letra = "AM-";
-			$sql = "select id from turnoadultos";
+			$sql = "select id from turnos";
 			$error = "Error al registrar el turno";
 			$buscar = consulta($con, $sql, $error);
 			$noTurno = mysqli_num_rows($buscar);
 			if ($noTurno > 0) {
-				$sql = "select turno from turnoadultos order by id desc";
+				$sql = "select turno from turnos where tipo = 'adultos' order by id desc";
 				$error = "Error al seleccionar el turno";
 				$buscar = consulta($con, $sql, $error);
 				$resultado = mysqli_fetch_assoc($buscar);
@@ -86,12 +117,12 @@ if (isset($_POST['registrar'])) {
 			}
 
 			$fecha = date("Y-m-d H:i:s");
-			$sql = "insert into turnoadultos (turno,fechaRegistro) values ('$turno','$fecha')";
+			$sql = "insert into turnos (turno,fechaRegistro,tipo) values ('$turno','$fecha','adultos')";
 			$error = "Error al registrar el turno";
 			$registrar = consulta($con, $sql, $error);
 
 			if ($registrar == true) {
-				$respuesta = array('status' => 'correcto', 'mensaje' => 'Turno registrado', 'turno' => $turno,'tipoAtencion' => 'adultoMayor',);
+				$respuesta = array('status' => 'correcto', 'mensaje' => 'Turno registrado', 'turno' => $turno, 'tipoAtencion' => 'adultoMayor',);
 			} else {
 				$respuesta = array('status' => 'error', 'mensaje' => 'Error al registrar el turno', 'turno' => 000);
 			}
@@ -99,12 +130,12 @@ if (isset($_POST['registrar'])) {
 			break;
 		case 'turnoDiscapacidad':
 			$letra = "D-";
-			$sql = "select id from turnodiscapacitados";
+			$sql = "select turno from turnos where tipo = 'discapacidad' order by id desc";
 			$error = "Error al registrar el turno";
 			$buscar = consulta($con, $sql, $error);
 			$noTurno = mysqli_num_rows($buscar);
 			if ($noTurno > 0) {
-				$sql = "select turno from turnodiscapacitados order by id desc";
+				$sql = "select turno from turnos where tipo = 'discapacidad' order by id desc";
 				$error = "Error al seleccionar el turno";
 				$buscar = consulta($con, $sql, $error);
 				$resultado = mysqli_fetch_assoc($buscar);
@@ -122,7 +153,7 @@ if (isset($_POST['registrar'])) {
 			}
 
 			$fecha = date("Y-m-d H:i:s");
-			$sql = "insert into turnodiscapacitados (turno,fechaRegistro) values ('$turno','$fecha')";
+			$sql = "insert into turnos (turno,fechaRegistro,tipo) values ('$turno','$fecha','discapacidad')";
 			$error = "Error al registrar el turno";
 			$registrar = consulta($con, $sql, $error);
 
@@ -150,14 +181,17 @@ if (isset($_POST['registrar'])) {
 				$turno = '000';
 				$sql = "";
 				switch ($tipoAtencion) {
+					case "fichas":
+						$sql = sprintf("select id,turno from turnos where atendido='0' and tipo = 'fichas' order by id asc");
+						break;
 					case "general":
-						$sql = sprintf("select id,turno from turnos where atendido='0' order by id asc");
+						$sql = sprintf("select id,turno from turnos where atendido='0' and tipo = 'general' order by id asc");
 						break;
 					case "adultoMayor":
-						$sql = sprintf("select id,turno from turnoadultos where atendido='0' order by id asc");
+						$sql = sprintf("select id,turno from turnos where atendido='0' and tipo = 'adultos' order by id asc");
 						break;
 					case "discapacidad":
-						$sql = sprintf("select id,turno from turnodiscapacitados where atendido='0' order by id asc");
+						$sql = sprintf("select id,turno from turnos where atendido='0' and tipo = 'discapacidad' order by id asc");
 						break;
 				}
 				$error = "Error al seleccionar el turno";
@@ -179,14 +213,17 @@ if (isset($_POST['registrar'])) {
 
 					//poner en la tabla turnos que caja lo esta atendiendo
 					switch ($tipoAtencion) {
+						case "fichas":
+							$sql = "update turnos set atendido='$idCaja' where id='$resultado[id]'";
+							break;
 						case "general":
 							$sql = "update turnos set atendido='$idCaja' where id='$resultado[id]'";
 							break;
 						case "adultoMayor":
-							$sql = "update turnoadultos set atendido='$idCaja' where id='$resultado[id]'";
+							$sql = "update turnos set atendido='$idCaja' where id='$resultado[id]'";
 							break;
 						case "discapacidad":
-							$sql = "update turnodiscapacitados set atendido='$idCaja' where id='$resultado[id]'";
+							$sql = "update turnos set atendido='$idCaja' where id='$resultado[id]'";
 							break;
 						default:
 							$sql = "";
@@ -222,7 +259,7 @@ if (isset($_POST['registrar'])) {
 			}
 
 			//funcion para actualizar las atenciones de turnos
-			function actualizarAtencion($con, $idCaja, $turno,$id_atencion)
+			function actualizarAtencion($con, $idCaja, $turno, $id_atencion)
 			{
 				$sql = "update atencion set atendido='1' where turno='$turno' and idCaja='$idCaja' and id=$id_atencion";
 				$error = "Error al actualizar  el turno en atencion";
@@ -232,7 +269,7 @@ if (isset($_POST['registrar'])) {
 			//consultar los turnos en atencion
 			$turnosAtencion = turnosEnAtencion($con, $idCaja);
 			$noTurnosAtencion = mysqli_num_rows($turnosAtencion);
-			$resultado ="";
+			$resultado = "";
 			if ($noTurnosAtencion == 0) {
 				//dar un nuevo turno si no exuisten turnos sin atender 
 				$turnoasignado = explode('||', darTurno($con, $idCaja, $tipoAtencion));
@@ -242,7 +279,7 @@ if (isset($_POST['registrar'])) {
 				$mensaje = $turnoasignado[2];
 				$tipoAtencion = $turnoasignado[4];
 			} else if ($noTurnosAtencion == 1) {
-				$id_atencion=0;
+				$id_atencion = 0;
 				//si solamente hay un turno por atender se actualiza ela t}atencion y se da uno nuevo
 				if ($_POST['turno'] != '000') {
 					$turno = limpiar($con, $_POST['turno']);
@@ -278,9 +315,9 @@ if (isset($_POST['registrar'])) {
 				$ocupado = false;
 			} //verificar que no haya mas turnos en atencion
 
-			$respuesta = array('status' => $status, 'mensaje' => $mensaje, 'turno' => $turno, 'ocupado' => $ocupado, 'idCaja' => $idCaja, 'tipoAtencion'=> $tipoAtencion);
+			$respuesta = array('status' => $status, 'mensaje' => $mensaje, 'turno' => $turno, 'ocupado' => $ocupado, 'idCaja' => $idCaja, 'tipoAtencion' => $tipoAtencion);
 			break;
-			default:
+		default:
 			break;
 	}
 	// echo $resultado['turno'];

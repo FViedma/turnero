@@ -42,6 +42,9 @@ function recibido(e) {
 
 		if (tipo != null && turno != null && caja != null) {
 			switch (jsonData.tipoAtencion) {
+				case "fichas":
+					tipoAtencionR = "F";
+					break;
 				case "general":
 					tipoAtencionR = "G";
 					break;
