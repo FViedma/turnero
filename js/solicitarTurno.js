@@ -29,11 +29,11 @@ function detectarAccion(e) {
 		id = e.target.id;
 
 	}
-	
+
 	switch (id) {
-		
+
 		case 'Fichas':
-			
+
 			funcion = procesarSolicitud;
 			fichero = 'consultas/registrar.php';
 			datos = 'registrar=fichas';
@@ -41,7 +41,7 @@ function detectarAccion(e) {
 			break;
 
 		case 'General':
-			
+
 			funcion = procesarSolicitud;
 			fichero = 'consultas/registrar.php';
 			datos = 'registrar=turno';
@@ -74,7 +74,12 @@ function detectarAccion(e) {
 
 function procesarSolicitud() {
 	if (conexion.readyState) {
-		var jsonData = JSON.parse(conexion.responseText);
+		var jsonData = '{}';
+		try {
+			jsonData = JSON.parse(conexion.responseText);
+		} catch (error) {
+			console.log(error + " " +conexion.responseText);
+		}
 		var noFichas = document.getElementById('fichas');
 		var noTurno = document.getElementById('turno');
 		var noTurnoA = document.getElementById('turnoA');
