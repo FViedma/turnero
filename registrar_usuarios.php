@@ -35,6 +35,7 @@
 
 						$usuario = limpiar($con,$_POST['usuario']);
 						$caja = limpiar($con,$_POST['caja']);
+						$rol = limpiar($con,$_POST['rol']);
 
 						$sql = "select * from usuarios where usuario='$usuario'";
 						$error = "Error al logear al usuario";
@@ -57,7 +58,7 @@
 
 								$fecha = date('Y-m-d H:i:s');
 								
-								$sql = "insert into usuarios (usuario,password,idCaja,fecha_alta) values ('$usuario','$password','$caja','$fecha')";
+								$sql = "insert into usuarios (usuario,password,idCaja,id_rol,fecha_alta) values ('$usuario','$password','$caja','$rol','$fecha')";
 								$error = "Error al registrar usuario";
 
 								$buscar = consulta($con,$sql,$error);
@@ -128,6 +129,14 @@
 								$buscar=consulta($con,$sql,$error);
 
 							?>
+                            <?php
+
+                            	$sql="select * from roles";
+								$error="Error al cargar las cajas";
+
+								$roles=consulta($con,$sql,$error);
+
+							?>
 
                             <select name="caja" id="caja">
 
@@ -137,6 +146,21 @@
 
                                 	while($caja=mysqli_fetch_assoc($buscar)){
 										echo "<option value='$caja[id]'>$caja[nombre]</option>";
+									}
+								?>
+
+                            </select>
+
+                            <label>Rol:</label>
+
+                            <select name="rol" id="rol">
+
+                            	<option value="ninguno">Selecciona un rol</option>
+
+                                <?php
+
+                                	while($rol=mysqli_fetch_assoc($roles)){
+										echo "<option value='$rol[id]'>$rol[nombre]</option>";
 									}
 								?>
 
