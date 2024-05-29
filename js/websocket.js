@@ -8,7 +8,7 @@ function iniciarWebsocket() {
 
 	imgStatus = document.getElementById('imgStatus');
 
-	socket = new WebSocket("ws://192.168.11.4");
+	socket = new WebSocket("ws://127.0.0.1:8888");
 
 	socket.addEventListener('open', abierto, false);
 	socket.addEventListener('message', recibido, false);
