@@ -9,7 +9,7 @@ if (isset($_POST['registrar'])) {
 		case 'reset-turnos':
 			$fecha = date("Y-m-d H:i:s");
 			$turno = "000";
-			$tipos = ["fichas", "general", "ädultos", "discapacidad"];
+			$tipos = ["fichas", "general", "adultos", "discapacidad"];
 			$respuesta = array('status' => 'correcto', 'mensaje' => 'Todas las consultas fueron realizadas correctamente');
 			foreach ($tipos as $tipo) {
 				$sql1 = "INSERT INTO turnos (turno, fechaRegistro, tipo) VALUES ('$turno', '$fecha', '$tipo')";
