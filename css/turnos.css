@@ -146,7 +146,6 @@ th {
 	text-align: center;
 	font-family: Arial, sans-serif;
 	font-size: 2vh;
-	height: 70px;
 }
 
 .mitabla,
@@ -156,7 +155,7 @@ td {
 	border-collapse: collapse;
 	text-align: center;
 	font-family: Arial, sans-serif;
-	height: 46px;
+	font-size: 2vh;
 }
 
 tbody tr {
@@ -164,7 +163,6 @@ tbody tr {
 	cursor: pointer;
 	background: skyblue;
 	padding: 10px;
-	font-size: 42px;
 }
 
 tbody tr:hover {

@@ -12,6 +12,7 @@ video.addEventListener("ended", function () {
         currentSource = 0;
     }
     video.src = "videos/" + sources[currentSource];
+    video.volume=0.5;
     video.load();
     video.play();
 });
