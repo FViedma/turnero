@@ -1,204 +1,140 @@
 /*Tabla para mostrar el ultimo turno llamado*/
 .contenedor-principal {
-	padding: 0px 20px;
-}
-
-.header {
 	display: flex;
-
+	height: 100vh;
+	padding: 20px;
+	box-sizing: border-box;
 }
 
-.contenedor-logo,
+/* Sección izquierda */
+.contenedor-izquierda {
+	width: 30%;
+	display: flex;
+	flex-direction: column;
+	justify-content: flex-start;
+	padding: 10px;
+	box-sizing: border-box;
+	gap: 10px;
+}
+
 .marco-tablaTurnos {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	background: #000000;
+	border: solid 7px #A4A4A4;
+	text-align: center;
+	min-width: 100%;
 	height: auto;
-	display: inline-block;
-	vertical-align: top;
-	background: #000000;
-	border: solid 7px #A4A4A4;
-	margin-bottom: 30px;
-	text-align: center;
-	min-width: 100px;
-	min-height: 50px;
+	padding: 10px;
+	/* Añade padding para separar el contenido del borde */
+	box-sizing: border-box;
 }
 
-.contenedor-logo {
-	width: 253px;
-	/* Establece un ancho para el contenedor del logo */
+.columna-tablaTurnos {
+	flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
 }
 
-.marco-tablaTurnos {
-	width: 85%;
-	/* Establece un ancho para el marco de la tabla de turnos */
-	margin-left: 20px;
-	/* Añade margen izquierdo para separarlo del logo */
-	background: #000000;
-	border: solid 7px #A4A4A4;
-	margin-bottom: 30px;
-	text-align: center;
-	min-width: 100px;
-	min-height: 50px;
+.tabla-turnosArriba,
+.tabla-turnosArriba3 {
+	font-size: 2vw;
+	color: white;
+}
+
+.tabla-turnosAbajo1,
+.tabla-turnosAbajo2,
+.tabla-turnosAbajo3 {
+	color: red;
+	font-size: 8vw;
+	line-height: 1; 
+	max-height: 100%; 
+	overflow: hidden;
+	white-space: nowrap; /* Evita que el texto se divida en varias líneas */
+	overflow-wrap: break-word; /* Permite que el texto se ajuste dentro del contenedor */
+}
+
+.tabla-turnosAbajo2{
+	color: lawngreen;
 }
 
 .contenedor-tablaTurnos {
 	display: flex;
-	height: auto;
-}
-
-.columna-tablaTurnos {
-	flex-basis: 50%;
-}
-
-.tabla-turnosArriba {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-}
-
-.tabla-turnosArriba3 {
-	display: flex;
-	justify-content: left;
-	align-items: center;
-
-}
-
-.tabla-turnosAbajo1 {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-}
-
-.tabla-turnosAbajo2 {
-	display: flex;
-	justify-content: center;
-	align-items: center;
-
-}
-
-.tabla-turnosAbajo3 {
-	display: flex;
-	justify-content: left;
-	align-items: center;
-
-}
-
-.tabla-turnosArriba {
-	font-size: 180%;
-	flex-basis: 60%;
-	color: white;
-	height: 90px;
-}
-
-.tabla-turnosArriba3 {
-	font-size: 180%;
-	flex-basis: 60%;
-	color: white;
-	height: 90px;
-}
-
-.tabla-turnosAbajo1 {
-	color: red;
-	font-size: 1003%;
-	flex-basis: 30%;
-	height: 150px;
-}
-
-.tabla-turnosAbajo2 {
-	color: red;
-	font-size: 1003%;
-	flex-basis: 30%;
-	height: 150px;
-}
-
-.tabla-turnosAbajo3 {
-	color: red;
-	font-size: 1003%;
-	flex-basis: 30%;
-	height: 150px;
-}
-
-.contenido {
-	display: flex;
-	margin-left: 47px;
-	margin-right: 100px;
-	width: 96%;
-	min-width: 300px;
-	height: 72%;
-}
-
-.contenido-izquierda,
-.contenido-derecha {
-	flex-basis: 50%;
-	height: auto;
-	padding: 0px;
-}
-
-.contenido-izquierda {
-	border: solid 1px white;
-	flex-basis: 100%;
-	padding: 0px;
-	top: -20px;
-}
-
-.logo-empresa {
-	display: inline;
-	max-height: 100%;
-	width: auto;
-}
-
-.logo-empresa img {
-	display: flex;
-	width: 100%;
-	height: auto;
-}
-
-.nombre-empresa {
-	display: flex;
-	align-items: center;
-	justify-content: center;
-	color: white;
-	flex-basis: 70%;
-	line-height: 2;
-	margin: 0px;
-	margin-left: 10px;
-}
-
-.img-hospital-Viedam {
-	display: flex;
-	margin-bottom: 10px;
-	padding: 0px;
-	width: 100%;
-	height: 20%
-}
-
-.contenedor-video {
-	display: flex;
-	align-items: center;
-	width: 100%;
-	height: 77%;
-	border: none;
-	float: center;
-	background: none;
-}
-
-.contenedor-reproductor {
-	background: #2D77E9;
-	padding-top: 0%;
-	width: 100%;
-	height: 90%;
-}
-
-.contenedor-reproductor video,
-.contenedor-reproductor iframe {
+	justify-content: space-between;
+	/* Asegura que los elementos estén separados */
 	width: 100%;
 	height: 100%;
 }
 
+/* Ajuste la posición horizontal de las columnas */
+.columna-tablaTurnos:nth-child(1) {
+	justify-content: flex-start;
+	/* Alinea a la izquierda */
+}
+
+.columna-tablaTurnos:nth-child(2) {
+	justify-content: center;
+	/* Centra en el medio */
+}
+
+.columna-tablaTurnos:nth-child(3) {
+	justify-content: flex-end;
+	/* Alinea a la derecha */
+}
+
+/* Sección derecha */
+.contenido-derecha {
+	width: 70%;
+	display: flex;
+	flex-direction: column;
+	padding-left: 20px;
+	box-sizing: border-box;
+}
+
+.contenido-izquierda {
+	width: 100%;
+}
+
+.contenedor-video {
+	display: flex;
+    flex-direction: column; /* Organiza el contenido de arriba hacia abajo */
+    width: 100%;
+    height: 100%; /* Ajusta la altura del contenedor para que ocupe el espacio disponible */
+    padding: 0; /* Elimina el padding para usar el espacio de manera eficiente */
+    box-sizing: border-box; /* Incluye el padding en el cálculo del ancho y alto */
+}
+
+.contenedor-reproductor {
+	flex: 1; /* Permite que el contenedor del reproductor de video crezca para llenar el espacio disponible */
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background: #2D77E9; /* Fondo azul para el contenedor del video */
+}
+video {
+    width: 100%;
+    height: auto; /* Ajusta la altura del video proporcionalmente */
+    max-height: 70vh; /* Limita la altura máxima del video para que no se extienda demasiado */
+}
+
+/* .contenedor-reproductor video,
+.contenedor-reproductor iframe {
+	width: 100%;
+	height: 100%;
+} */
+
+#miTabla {
+	width: 100%;
+	height: 156px;
+}
+
+/* Estilos adicionales */
 thead {
-	top: 16px;
 	background: #62a8f8;
-	padding: 10px 10px;
+	padding: 10px;
 	font-size: 18px;
 	color: white;
 }
@@ -208,55 +144,39 @@ th {
 	border: 1px solid black;
 	border-collapse: collapse;
 	text-align: center;
-	height: 260%;
-	margin: 20px;
 	font-family: Arial, sans-serif;
-	width: 20%;
-}
-
-#miTabla {
-	width: 100%;
+	font-size: 2vh;
+	height: 70px;
 }
 
 .mitabla,
 td {
 	border: 1px solid black;
-	width: 20%;
-	padding: 2px 2px;
-	font-weight: 700;
+	padding: 2px;
 	border-collapse: collapse;
 	text-align: center;
-	height: 260%;
-	margin: 20px;
 	font-family: Arial, sans-serif;
-	
+	height: 46px;
 }
 
 tbody tr {
-	width: 20%;
 	border: 6px solid;
 	cursor: pointer;
 	background: skyblue;
-	padding: 10px 10px;
-	font-size: 30px;
-	height: 40px;
+	padding: 10px;
+	font-size: 42px;
 }
 
 tbody tr:hover {
 	background: rgba(53, 210, 253, 0.903);
 }
 
-.contenido-derecha {
-	flex-basis: 30%;
-	margin-left: 20px;
-}
-
 .contenedor-turnos {
-	background: white;
 	width: 100%;
 	height: 100%;
 	min-height: 300px;
 	border: none;
+	background: seashell;
 }
 
 .tabla-turnos {
@@ -269,17 +189,14 @@ tbody tr:hover {
 	color: black;
 	padding: 25px;
 	border: 1px solid white;
-	background: white;
 }
 
 .tabla-turnos td {
 	background: white;
 	color: black;
-	font-size: 40px;
-	padding-bottom: 15px;
+	font-size: 5vh;
 	font-weight: 600;
-	border: 1px solid white;
-	background: white;
+	border: 0px solid white;
 }
 
 .primer-fila {
@@ -299,14 +216,16 @@ tbody tr:hover {
 	font-size: 20px;
 }
 
-.no-caja {
-	text-align: left;
-	padding-left: 20px;
-}
-
 .footer {
 	margin: 20px auto;
 	width: 70%;
 	min-width: 300px;
 	height: 10%;
+}
+
+.clock {
+    font-size: 4vw; /* Ajusta el tamaño según sea necesario */
+    color: #FFFFFF; /* Cambia el color según sea necesario */
+    text-align: center;
+    margin-top: 20px; /* Espacio superior para separarlo de la tabla */
 }

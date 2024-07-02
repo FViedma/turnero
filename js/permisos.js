@@ -22,11 +22,12 @@ function mostrarSiguienteFila() {
     }
 
     tableRows[filaActual].style.display = "table-row";
-    if (filaActual + 3 < numRows) {
+    if (filaActual + 4 < numRows) {
         tableRows[filaActual + 1].style.display = "table-row"; // Mostrar la siguiente fila
         tableRows[filaActual + 2].style.display = "table-row"; // Mostrar la siguiente siguiente fila
+        tableRows[filaActual + 3].style.display = "table-row"; // Mostrar la siguiente siguiente fila
     }
-    filaActual += 3;
+    filaActual += 4;
 }
 
 interval = setInterval(mostrarSiguienteFila, 15000); 

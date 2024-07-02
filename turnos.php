@@ -27,19 +27,20 @@
 
         $info = mysqli_fetch_assoc($buscarE);
         ?>
-        <header>
-            <div class="contenedor-logo">
-                <div class="logo-empresa">
-                    <img src="<?php echo $info['logo']; ?>">
+        <div class="contenedor-izquierda">
+            <!-- <header>
+                <div class="contenedor-logo">
+                    <div class="logo-empresa">
+                        <img src="<?php echo $info['logo']; ?>">
+                    </div>
                 </div>
-            </div>
 
-
+            </header> -->
             <div class="marco-tablaTurnos">
                 <div class="contenedor-tablaTurnos">
                     <div class="columna-tablaTurnos">
                         <div class="tabla-turnosArriba">Tipo</div>
-                        <div class="tabla-turnosAbajo1" id="verTipo">G</div>
+                        <div class="tabla-turnosAbajo1" id="verTipo" data-value="G">G</div>
 
                     </div>
                     <div class="columna-tablaTurnos">
@@ -48,15 +49,23 @@
 
                     </div>
                     <div class="columna-tablaTurnos">
-                        <div class="tabla-turnosArriba3">Adm</div>
+                        <div class="tabla-turnosArriba">Adm</div>
                         <div class="tabla-turnosAbajo3" id="verCaja">0</div>
                     </div>
 
                 </div>
             </div>
+            <div class="contenedor-turnos">
+                <table class="tabla-turnos" id="tabla-turnos">
+                    <tr>
+                        <th>Turno</th>
+                        <th colspan="2">Adm</th>
+                    </tr>
+                </table>
 
-        </header>
-        <section class="contenido">
+            </div><!--contenedor turnos-->
+        </div>
+        <div class="contenido-derecha">
 
             <div class="contenido-izquierda">
 
@@ -142,7 +151,7 @@
 
                 ?>
 
-                <h1 class="nombre-empresa"><?php echo $info['nombre']; ?> Bienvenido</h1>
+                <!-- <h1 class="nombre-empresa"><?php echo $info['nombre']; ?> Bienvenido</h1> -->
                 <div class="contenedor-video">
 
                     <div class="contenedor-reproductor">
@@ -166,56 +175,43 @@
                             ?>
                         </video>
 
-                        <body>
-                            <table id="miTabla">
-                                <thead>
-                                    <tr>
-                                        <th colspan="5">LISTA DE DOCTORES CON PERMISOS</th>
-                                    </tr>
-                                    <tr>
-                                        <th>Nombres</th>
-                                        <th>Apellidos</th>
-                                        <th>Fecha_Permiso</th>
-                                        <th>Fecha_Retorno</th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <?php
-                                    foreach ($data_list as $data) {
-                                        echo '<tr>';
-                                        echo '<td>' . $data['firstName'] . '</td>';
-                                        echo '<td>' . $data['lastName'] . '</td>';
-                                        echo '<td>' . substr($data['start'], 0, 10) . '</td>';
-                                        echo '<td>' . substr($data['end'], 0, 10) . '</td>';
-                                        echo '</tr>';
-                                    }
-                                    ?>
-                                </tbody>
-                            </table>
-                        </body>
 
                     </div>
+
+                    <body>
+                        <table id="miTabla">
+                            <thead>
+                                <tr>
+                                    <th colspan="5">LISTA DE DOCTORES CON PERMISOS</th>
+                                </tr>
+                                <tr>
+                                    <th>Nombres</th>
+                                    <th>Apellidos</th>
+                                    <th>Fecha Permiso</th>
+                                    <th>Fecha Retorno</th>
+                                </tr>
+                            </thead>
+                            <tbody>
+                                <?php
+                                foreach ($data_list as $data) {
+                                    echo '<tr>';
+                                    echo '<td>' . $data['firstName'] . '</td>';
+                                    echo '<td>' . $data['lastName'] . '</td>';
+                                    echo '<td>' . substr($data['start'], 0, 10) . '</td>';
+                                    echo '<td>' . substr($data['end'], 0, 10) . '</td>';
+                                    echo '</tr>';
+                                }
+                                ?>
+                            </tbody>
+                        </table>
+                        <div id="clock" class="clock"></div>
+                    </body>
 
                 </div>
 
             </div>
 
-            <div class="contenido-derecha">
-
-                <div class="contenedor-turnos">
-
-                    <table class="tabla-turnos" id="tabla-turnos">
-                        <tr>
-                            <th>Turno</th>
-                            <th colspan="2">Adm</th>
-                        </tr>
-                    </table>
-
-                </div><!--contenedor turnos-->
-
-            </div>
-
-        </section><!--contenido-->
+        </div><!--contenido-->
 
     </div><!--contenedor principal-->
 
@@ -225,6 +221,7 @@
     <script src="js/websocket.js"></script>
     <script src="js/video.js"></script>
     <script src="js/permisos.js"></script>
+    <script src="js/clock.js"></script>
 
 </body>
 

@@ -55,6 +55,12 @@ function recibido(e) {
 					tipoAtencionR = "D";
 					break;
 			}
+			// Ajustar el tamaño de la fuente según el tipo de atención
+			var fontSize = tipoAtencionR === 'Am' ? '6vw' : '8vw';
+			tipo.style.fontSize = fontSize;
+			turno.style.fontSize = fontSize;
+			caja.style.fontSize = fontSize;
+
 			tipo.innerHTML = tipoAtencionR;
 			turno.innerHTML = jsonData.turno;
 			caja.innerHTML = jsonData.idCaja;
@@ -112,7 +118,7 @@ function mostrarTurnos(noTipoAtencion = '', noTurno = '', noCaja = '') {
 	// }
 
 	//quitar el ultimo turno para que siempre haya 10
-	if (turno.length == 10 && caja.length == 10) {
+	if (turno.length == 12 && caja.length == 12) {
 
 		tipo.pop();
 
@@ -146,16 +152,19 @@ function mostrarTurnos(noTipoAtencion = '', noTurno = '', noCaja = '') {
 
 	caja = caja.reverse();
 
-	var th = "<tr><th>Tipo</th><th>Turno</th><th colspan='2'>Adm</th></tr>";
+	// var th = "<tr><th>Tipo</th><th>Turno</th><th colspan='2'>Adm</th></tr>";
+	var th = "<tr><th>Turno</th><th>Adm</th></tr>";
 
 	for (var i = 0; i < turno.length; i++) {
 		if (i == 0) {
 
-			tr = "<tr><td><span class='primer-fila'>" + tipo[i] + "</span></td><td><span  class='primer-fila'>" + turno[i] + "</span></td><td class='td-caja'><span class='caja primer-fila'>Adm</span></td><td class='no-caja'><span  class='primer-fila'>" + caja[i] + "</span></td></tr>".toString();
+			// tr = "<tr><td><span class='primer-fila'>" + tipo[i] + "</span></td><td><span  class='primer-fila'>" + turno[i] + "</span></td><td class='td-caja'><span class='caja primer-fila'>Adm</span></td><td class='no-caja'><span  class='primer-fila'>" + caja[i] + "</span></td></tr>".toString();
+			tr = "<tr><td><span  class='primer-fila'>" + tipo[i] + " " + turno[i] + "</span></td></td><td class='no-caja'><span  class='primer-fila'>" + caja[i] + "</span></td></tr>".toString();
 
 		} else {
 
-			tr = tr + "<tr><td><span class='primer-fila'>" + tipo[i] + "</span></td><td>" + turno[i] + "</td><td class='td-caja'><span class='caja'>Adm</span></td><td class='no-caja'>" + caja[i] + "</td></tr>".toString();
+			// tr = tr + "<tr><td><span class='primer-fila'>" + tipo[i] + "</span></td><td>" + turno[i] + "</td><td class='td-caja'><span class='caja'>Adm</span></td><td class='no-caja'>" + caja[i] + "</td></tr>".toString();
+			tr = tr + "<tr><td>" + tipo[i] + " " + turno[i] + "</td><td class='no-caja'>" + caja[i] + "</td></tr>".toString();
 
 		}
 
